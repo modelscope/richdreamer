@@ -1,0 +1,4 @@
+[submodule "extern/nd_sd"]
+	path = extern/nd_sd
+	url = https://github.com/modelscope/normal-depth-diffusion
+	branch = main

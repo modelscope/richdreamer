@@ -1,0 +1,146 @@
+name: "v4/nd-rgb-geo-dmtet-refine"
+tag: "${rmspace:${system.prompt_processor.prompt},_}"
+exp_root_dir: "outputs"
+seed: 0
+
+data_type: "random-multiview-camera-datamodule"
+data:
+  batch_size: 4 # must be dividable by n_view
+  n_view: 4
+
+  width: 512
+  height: 512
+
+  relative_radius: true
+  camera_distance_range: [0.8, 1.0] # relative
+  fovy_range: [40, 45]
+  elevation_range: [5, 30]
+  ele_random_prob: 1.0
+
+  camera_perturb: 0.
+  center_perturb: 0.
+  up_perturb: 0.
+  n_val_views: 4
+  eval_camera_distance: 3.0
+  eval_fovy_deg: 40
+
+system_type: "nd-mvdream-system"
+system:
+  latent_steps: 0
+  nd_latent_steps: ${trainer.max_steps}
+  texture: False
+  do_init: False
+
+  geometry_convert_inherit_texture: true
+  geometry_type: "tetrahedra-sdf-grid"
+
+  geometry:
+    radius: 1.0
+
+    isosurface_resolution: 256
+    isosurface_deformable_grid: true
+    nerf_scale: 1.2
+
+    pos_encoding_config: # consistent with coarse, no progressive band
+      otype: HashGrid
+      n_levels: 16
+      n_features_per_level: 2
+      log2_hashmap_size: 19
+      base_resolution: 16
+      per_level_scale: 1.447269237440378 # max resolution 4096
+
+    fix_geometry: false # optimize grid sdf and deformation
+    n_feature_dims: 3
+
+
+  material_type: "no-material"
+  material:
+    n_output_dims: 3
+    requires_normal: true
+
+  background_type: "solid-color-background"
+
+
+  renderer_type: "nvdiff-rasterizer"
+  renderer:
+    context_type: "cuda"
+    depth_norm_radius: ${system.geometry.radius}
+
+
+  prompt_processor_type: "stable-diffusion-prompt-processor"
+  prompt_processor:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    prompt: ???
+
+  guidance_type: "stable-diffusion-guidance"
+  guidance:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    guidance_scale: 50.
+    weighting_strategy: fantasia3d
+
+    min_step_percent: 0.02
+    max_step_percent: 0.5
+
+    collect_inputs: ['comp_normal_cam_vis']
+    share_t: false
+
+
+  nd_prompt_processor_type: "stable-diffusion-prompt-processor"
+  nd_prompt_processor:
+    pretrained_model_name_or_path: "runwayml/stable-diffusion-v1-5" # our model training
+    prompt: ${system.prompt_processor.prompt}
+    negative_prompt: "ugly, bad anatomy, blurry, pixelated obscure, unnatural colors, poor lighting, dull, and unclear, cropped, lowres, low quality, artifacts, duplicate, morbid, mutilated, poorly drawn face, deformed, dehydrated, bad proportions"
+    front_threshold: 30.
+    back_threshold: 30.
+
+  nd_guidance_type: "nd-multiview-diffusion-guidance"
+  nd_guidance:
+    model_name: "nd-mv"
+    ckpt_path: "pretrained_models/Damo_XR_Lab/Normal-Depth-Diffusion-Model/nd_mv_ema.ckpt" # path to a pre-downloaded checkpoint file (null for loading from URL)
+    guidance_scale: 50.0
+    min_step_percent: 0.02
+    max_step_percent: 0.50
+    recon_loss: false
+    collect_inputs_lat: ['comp_normal_cam_vis', 'disparity']
+    collect_inputs: ['comp_normal_cam_vis', 'disparity']
+    cam_method: "rel_x2"
+    rotate_z: true
+
+  loggers:
+    wandb:
+      enable: false
+      project: "threestudio"
+
+  loss:
+    lambda_nd: [0, 1, 1, 10000]
+    lambda_rgb_sd: [0, 1, 1, 10000]
+    lambda_nd_w: [0, 1.0, 1.0, 10000]
+
+    lambda_rgb_sds: 1.
+    lambda_nd_sds: 1.
+    lambda_orient: 0.
+    lambda_sparsity: 0.
+    lambda_opaque: 0.
+    lambda_z_variance: 0.
+    lambda_normal_consistency: 10000.
+
+  optimizer:
+    name: AdamW
+    args:
+      lr: 0.01
+      betas: [0.9, 0.99]
+      eps: 1.e-15
+
+
+trainer:
+  max_steps: 3000
+  log_every_n_steps: 100
+  num_sanity_val_steps: 1
+  val_check_interval: 200
+  enable_progress_bar: true
+  precision: 16-mixed
+
+checkpoint:
+  save_last: true
+  save_top_k: -1
+  every_n_train_steps: ${trainer.max_steps}

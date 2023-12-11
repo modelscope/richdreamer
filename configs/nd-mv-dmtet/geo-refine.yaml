@@ -1,0 +1,130 @@
+name: ???
+tag: "${rmspace:${system.prompt_processor.prompt},_}"
+exp_root_dir: "outputs"
+seed: 0
+
+system_type: "nd-dmtet-mv-refine-system"
+system:
+  latent_steps: 0
+  geometry_type: "implicit-sdf"
+  geometry_convert_from: ???
+  geometry_convert_inherit_texture: false
+  is_refine: True
+
+  geometry:
+    radius: 1.0
+    n_feature_dims: 0
+    isosurface_resolution: 256
+    isosurface_deformable_grid: true
+    isosurface_coarse_to_fine: false
+
+
+  material_type: "no-material" # unused
+  anneal_normal_stone: [600, 1000, 1500]
+
+  material:
+    n_output_dims: 0
+
+  background_type: "solid-color-background" # unused
+
+  renderer_type: "nvdiff-rasterizer-dmtet"
+  renderer:
+    context_type: "cuda"
+    camera_space: True # normal using in camera space
+    mv_bg_colors: 'blue'
+    sd_bg_colors: 'white'
+
+
+  # sd guidnace
+  prompt_processor_type: "stable-diffusion-prompt-processor"
+  prompt_processor:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    prompt: ???
+    negative_prompt: "low quality"
+
+  guidance_type: "stable-diffusion-dreamtimes-guidance"
+  guidance:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    min_step_percent: 0.02  # (start_iter, start_val, end_val, end_iter)
+    max_step_percent: 0.50
+    guidance_scale: 50.
+    weighting_strategy: fantasia3d
+
+  # mv guidance
+  nd_prompt_processor_type: "stable-diffusion-prompt-processor"
+  nd_prompt_processor:
+    pretrained_model_name_or_path: "runwayml/stable-diffusion-v1-5" # our model training
+    prompt: ${system.prompt_processor.prompt}
+    negative_prompt: "low quality"
+    front_threshold: 30.
+    back_threshold: 30.
+
+  nd_guidance_type: "nd-mv-dmtet-guidance"
+  nd_guidance:
+    model_name: "nd-mv"
+    ckpt_path: 'pretrained_models/Damo_XR_Lab/Normal-Depth-Diffusion-Model/nd_mv_ema.ckpt'
+    guidance_scale: 50
+    min_step_percent: 0.02  # (start_iter, start_val, end_val, end_iter)
+    max_step_percent: 0.50
+    recon_loss: True
+    recon_std_rescale: 0.5
+    # weighting_strategy: fantasia3d
+    # recon_loss: False
+
+  loggers:
+    wandb:
+      enable: false
+      project: 'threestudio'
+      name: None
+
+  loss:
+    lambda_sds: 1.
+    lambda_normal_consistency: 1000.
+    lambda_laplacian_smoothness: 0. # NOTE that if open, need to switch training data_type to float32
+
+    sd_loss: 1.
+    nd_sd_loss: 1.
+    mesh_loss: 1.
+
+  optimizer:
+    name: AdamW
+    args:
+      lr: 0.001
+      betas: [0.9, 0.99]
+      eps: 1.e-15
+
+trainer:
+  max_steps: 2000
+  log_every_n_steps: 100
+  num_sanity_val_steps: 1
+  val_check_interval: 100
+  enable_progress_bar: true
+  precision: 16-mixed
+
+checkpoint:
+  save_last: true # save at each validation time
+  save_top_k: -1
+  every_n_train_steps: ${trainer.max_steps}
+
+data_type: "Dream3D-Orthogonal"
+data:
+  batch_size: 4
+  width: 1024
+  height: 1024
+  camera_distance_range: [0.8, 0.9] # relative
+  fovy_range: [40, 45]
+  camera_perturb: 0.0
+  center_perturb: 0.
+  up_perturb: 0.
+  elevation_range: [5, 30]
+  azimuth_range: [-180, 180]
+  batch_uniform_azimuth: true
+  eval_camera_distance: 2.5
+  eval_fovy_deg: 40.
+  train_max_step: ${trainer.max_steps}
+  train_val_check: ${trainer.val_check_interval}
+  seed: ${seed}
+  multiview_eval: True
+  camera_sampling_stone: [] # only front view  front_view with side view # (strategy_0,  strategy_1, strategy_2);
+  cond_view: []
+  relative: True

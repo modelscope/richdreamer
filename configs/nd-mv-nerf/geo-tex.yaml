@@ -1,0 +1,202 @@
+name: "nd-mv-nerf/geo-tex"
+tag: "${rmspace:${system.prompt_processor.prompt},_}"
+exp_root_dir: "outputs"
+seed: 0
+
+data_type: "random-multiview-camera-datamodule"
+data:
+  batch_size: [4, 4] # must be dividable by n_view
+  n_view: 4
+  width: [64, 128]
+  height: [64, 128]
+  resolution_milestones: [3000]
+  relative_radius: true
+  camera_distance_range: [0.8, 1.0] # relative
+  fovy_range: [40, 45]
+  elevation_range: [5, 30]
+  ele_random_prob: 1.0
+
+  camera_perturb: 0.
+  center_perturb: 0.
+  up_perturb: 0.
+  n_val_views: 4
+  eval_camera_distance: 3.0
+  eval_fovy_deg: 40
+
+system_type: "nd-mat-mvdream-system"
+system:
+  latent_steps: 1500
+  nd_latent_steps: ${trainer.max_steps}
+  mv_latent_steps: 0
+
+  texture: False
+  do_init: False
+
+  switch_ginp: True
+  switch_freq: 2
+
+  geometry_type: "implicit-volume"
+  geometry:
+    radius: 1
+    normal_type: "analytic"
+
+    density_bias: "blob_magic3d"
+    density_activation: softplus
+    density_blob_scale: 10.
+    density_blob_std: 0.5
+
+    pos_encoding_config:
+      otype: HashGrid
+      n_levels: 16
+      n_features_per_level: 2
+      log2_hashmap_size: 19
+      base_resolution: 16
+      per_level_scale: 1.447269237440378 # max resolution 4096
+
+    n_feature_dims: 8
+
+
+  material_type: "pbr-material"
+  material:
+    material_activation: sigmoid
+    environment_texture: "load/lights/mud_road_puresky_4k.hdr"
+    environment_scale: 2.0
+    min_metallic: 0.0
+    max_metallic: 0.9
+    min_roughness: 0.08
+    max_roughness: 0.9
+    use_bump: false
+
+  background_type: "solid-color-background"
+  background:
+    learned: true
+
+  renderer_type: "nerf-volume-renderer"
+  renderer:
+    radius: ${system.geometry.radius}
+    num_samples_per_ray: 512
+    camera_distance_range: ${data.camera_distance_range}
+    return_comp_normal: True
+    occ_grid_res: 32
+    depth_norm_radius: ${system.geometry.radius}
+
+
+  prompt_processor_type: "stable-diffusion-prompt-processor"
+  prompt_processor:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    # pretrained_model_name_or_path: "runwayml/stable-diffusion-v1-5"
+    prompt: ???
+    # negative_prompt: "shadow, oversaturated, low quality, unrealistic"
+
+
+  guidance_type: "stable-diffusion-guidance"
+  guidance:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+
+    guidance_scale: 50.
+    weighting_strategy: fantasia3d
+
+    min_step_percent: [0, 0.50, 0.02, 3000]  # (start_iter, start_val, end_val, end_iter)
+    max_step_percent: [0, 0.98, 0.50, 3000]
+
+    collect_inputs_lat: ['comp_rgb', 'opacity']
+    collect_inputs: [comp_normal_cam_vis, comp_rgb]
+    share_t: false
+    view_dependent_prompting: true
+
+
+  mv_prompt_processor_type: "stable-diffusion-prompt-processor"
+  mv_prompt_processor:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    prompt: the albedo of ${system.prompt_processor.prompt}
+    negative_prompt: "shadow, oversaturated, low quality, unrealistic"
+    front_threshold: 30.
+    back_threshold: 30.
+
+
+  mv_guidance_type: "nd-multiview-diffusion-guidance"
+  mv_guidance:
+    model_name: "albedo-mv"
+    ckpt_path: "pretrained_models/dadong/Normal-Depth-Diffusion-Model/albedo_mv_ema.ckpt" # path
+    guidance_scale: 10.0
+    min_step_percent: 0.02
+    max_step_percent: 0.98
+    recon_loss: true
+    recon_std_rescale: 0.5
+    collect_inputs: ['comp_albedo', 'disparity']
+    cam_method: "rel_x2"
+    rotate_z: true
+
+
+  nd_prompt_processor_type: "stable-diffusion-prompt-processor"
+  nd_prompt_processor:
+    pretrained_model_name_or_path: "runwayml/stable-diffusion-v1-5" # our model training
+    prompt: ${system.prompt_processor.prompt}
+    negative_prompt: "ugly, bad anatomy, blurry, pixelated obscure, unnatural colors, poor lighting, dull, and unclear, cropped, lowres, low quality, artifacts, duplicate, morbid, mutilated, poorly drawn face, deformed, dehydrated, bad proportions"
+    front_threshold: 30.
+    back_threshold: 30.
+
+
+  nd_guidance_type: "nd-multiview-diffusion-guidance"
+  nd_guidance:
+    model_name: "nd-mv"
+    ckpt_path: "pretrained_models/Damo_XR_Lab/Normal-Depth-Diffusion-Model/nd_mv_ema.ckpt" # path to a pre-downloaded checkpoint file
+    guidance_scale: 50.0
+    min_step_percent: [0, 0.50, 0.02, 3000]  # (start_iter, start_val, end_val, end_iter)
+    max_step_percent: [0, 0.98, 0.50, 3000]
+    recon_loss: true
+    recon_std_rescale: 0.5
+    collect_inputs_lat: ['comp_normal_cam_vis', 'disparity']
+    collect_inputs: ['comp_normal_cam_vis', 'disparity']
+    cam_method: "rel_x2"
+    rotate_z: true
+
+  loggers:
+    wandb:
+      enable: false
+      project: "threestudio"
+
+  loss:
+    lambda_nd: [0, 1, 1, 10000]
+    lambda_mv: [0, 10.0, 2.0, 3501]
+    lambda_rgb_sd: [0, 1, 1, 10000]
+    lambda_nd_w: [0, 2.0, 2.0, 10000]
+    lambda_mv_w: [0, 1.0, 1.0, 10000]
+    lambda_rgb_sds: 1.
+    lambda_nd_sds: 1.
+    lambda_mv_sds: 1.
+    lambda_orient: [0, 10., 1000., 5000]
+    lambda_sparsity: 0.01
+    lambda_opaque: 0.
+    lambda_z_variance: 0.
+    lambda_normal_consistency: 0.
+
+  optimizer:
+    name: AdamW
+    args:
+      betas: [0.9, 0.99]
+      eps: 1.e-15
+      lr: 0.01
+    params:
+      geometry.encoding:
+        lr: 0.01
+      geometry.density_network:
+        lr: 0.001
+      geometry.feature_network:
+        lr: 0.001
+      background:
+        lr: 0.001
+
+
+trainer:
+  max_steps: 5000
+  log_every_n_steps: 100
+  num_sanity_val_steps: 1
+  val_check_interval: 200
+  enable_progress_bar: true
+  precision: 16-mixed
+
+checkpoint:
+  save_last: true
+  save_top_k: -1
+  every_n_train_steps: ${trainer.max_steps}
