@@ -1,4 +1,10 @@
-# RichDreamer
+<p align="center">
+    <br>
+    <img src="https://modelscope.oss-cn-beijing.aliyuncs.com/modelscope.gif" width="400"/>
+    <br>
+    <h1>RichDreamer</h1>
+<p>
+
 RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D.
 
 [Lingteng Qiu\*](https://lingtengqiu.github.io/),
@@ -11,6 +17,8 @@ Yushuang Wu,
 [Zilong Dong](https://scholar.google.com/citations?user=GHOQKCwAAAAJ&hl=zh-CN&oi=ao),
 [Liefeng Bo](https://research.cs.washington.edu/istc/lfb/),
 [Xiaoguang Han](https://gaplab.cuhk.edu.cn/)
+
+如果您熟悉中文，可以阅读[中文版本的README](./README_ZH.md)。
 
 Our method is based on Normal-Depth diffusion Model, for more details please refer to [normal-depth-diffusion](https://github.com/modelscope/normal-depth-diffusion).
 
