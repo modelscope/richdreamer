@@ -179,10 +179,6 @@ pyrightconfig.json
 .threestudio_cache/
 outputs/
 outputs-gradio/
-demo_dmtet/
-demo_nerf/
-dmtet/
-nerf/
 
 # pretrained model weights
 *.ckpt
