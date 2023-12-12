@@ -12,10 +12,9 @@ mkdir -p  $exp_root_dir
 mkdir -p  $SAVE_MODEL_PATH
 
 
-echo $prompt
+echo "input prompt: $prompt"
 result=$(echo "${prompt}" | tr ' ' '_')
 result=$(echo "$result" | tr -d '"')
-echo $result
 echo output_dir: $SAVE_PATH
 echo GPUs: $GPUS
 

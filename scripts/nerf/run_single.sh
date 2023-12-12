@@ -32,11 +32,10 @@ fi
 
 echo "GPU: ${GPUS}"
 echo "ITER: $ITER"
-echo guidance_type: $G_TYPE
-echo $prompt
+echo "guidance_type:  $G_TYPE"
+echo "input prompt: $prompt"
 result=$(echo "${prompt}" | tr ' ' '_')
 result=$(echo "$result" | tr -d '"')
-echo $result
 echo output_dir: $SAVE_PATH
 
 geo_out=nd-mv-nerf/geo-fast

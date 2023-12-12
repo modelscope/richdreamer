@@ -84,16 +84,36 @@ cp ./pretrained_models/Damo_XR_Lab/Normal-Depth-Diffusion-Model/256_tets.npz ./l
 cd pretrained_models && ln -s ~/.cache/huggingface ./
 ```
 
-if you cannot visit huggingface to download SD 1.5 and SD 2.1, you can download SD models from [aliyun](https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/RichDreamer/models_sd.tar.gz) and then put `$download_sd` file to `pretrained_models/huggingface/hub/`.
+if you cannot visit huggingface to download SD 1.5, SD 2.1 and CLIPs, you can download SD and CLIP models from [aliyun](https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/RichDreamer/models_sd_clip.tar.gz) and then put `$download_sd_clip` file to `pretrained_models/huggingface/hub/`.
 
 ```bash
 mkdir -p pretrained_models/huggingface/hub/
 cd pretrained_models/huggingface/hub/
-mv /path/to/${download_sd} ./
-tar -xvf ${download_sd} ./
+mv /path/to/${download_sd_clip} ./
+tar -xvf ${download_sd_clip} ./
 ```
 
 ## Generation
+Make sure you have the following models.
+```bash
+RichDreamer
+|-- pretrained_models
+    |-- Damo_XR_Lab
+        |-- Normal-Depth-Diffusion-Model
+            |-- nd_mv_ema.ckpt
+            |-- albedo_mv_ema.ckpt
+    
+    |-- huggingface
+        |-- hub
+            |-- models--runwayml--stable-diffusion-v1-5
+            |-- models--openai--clip-vit-large-patch14
+            |-- models--stabilityai--stable-diffusion-2-1-base
+            |-- models--laion--CLIP-ViT-H-14-laion2B-s32B-b79K
+```
+Note we setting environment variable `TRANSFORMERS_OFFLINE=1 DIFFUSERS_OFFLINE=1 HF_HUB_OFFLINE=1` in all `*.sh` file before running command to prevent from connecting to huggingface each time.
+
+If you using above script to download SD and CLIP models, you do nothing, if you download via huggingface api, `in first run`, you need to set `TRANSFORMERS_OFFLINE=0 DIFFUSERS_OFFLINE=0 HF_HUB_OFFLINE=0` in `*.sh` and it will connect hugging face and automatic download models.
+
 
 ### Our (NeRF)
 
@@ -102,8 +122,9 @@ tar -xvf ${download_sd} ./
 python3 ./run_nerf.py -t $prompt -o $output
 
 # Run from prompt list
-# e.g. bash ./scripts/nerf/run_batch_fast.sh 0 1 ./prompts_nerf.txt
-bash ./scripts/nerf/run_batch_fast.sh $start_id $end_id ${prompts_nerf.txt}
+# e.g. bash ./scripts/nerf/run_batch.sh 0 1 ./prompts_nerf.txt
+# We also provide run_batch_res256.sh to optimize using high-resolution rendering images to achieve better results, but it will consume more memory and time.
+bash ./scripts/nerf/run_batch.sh $start_id $end_id ${prompts_nerf.txt}
 
 # If you don't have an A-100 device, we offer a save memory version to generate results.
 # For single GTX-3090/4090, 24GB GPU memory.
