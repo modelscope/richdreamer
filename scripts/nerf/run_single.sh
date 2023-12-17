@@ -1,4 +1,4 @@
-# set -e
+set -e
 export TRANSFORMERS_OFFLINE=1
 export DIFFUSERS_OFFLINE=1
 export HF_HUB_OFFLINE=1
@@ -50,7 +50,7 @@ rm -rf $exp_root_dir/$tex_out/a_DSLR_photo_of_$result
 python3 launch.py --config configs/nd-mv-nerf/geo.yaml \
         --train --gpu $GPUS system.prompt_processor.prompt="$prompt"  use_timestamp=False \
         name=$geo_out \
-        data.width=[64,$IMG_RES] data.height=[64,$IMG_RES]\
+        data.width=[64,$IMG_RES] data.height=[64,$IMG_RES] data.batch_size=[4,4] \
         exp_root_dir=$exp_root_dir ${@:6}
 
 

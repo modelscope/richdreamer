@@ -43,15 +43,25 @@ def fix_mesh(obj_file, save_path):
 
 class SaverMixin:
     _save_dir: Optional[str] = None
+    _exp_root_save_dir: Optional[str] = None
     _wandb_logger: Optional[WandbLogger] = None
 
     def set_save_dir(self, save_dir: str):
         self._save_dir = save_dir
 
+    def set_exp_root_dir(self, exp_root_dir: str):
+        self._exp_root_save_dir = exp_root_dir
+
     def get_save_dir(self):
         if self._save_dir is None:
             raise ValueError("Save dir is not set")
         return self._save_dir
+
+    def get_exp_root_dir(self):
+        if self._exp_root_save_dir is None:
+            raise ValueError("exp root save dir dir is not set")
+        return self._exp_root_save_dir
+
 
     def convert_data(self, data):
         if data is None:
@@ -347,6 +357,10 @@ class SaverMixin:
         cv2.imwrite(save_path, img)
         if name and self._wandb_logger:
             wandb.log({name: wandb.Image(save_path), "trainer/global_step": step})
+
+        save_vis_path = os.path.join(self.get_exp_root_dir(), "vis.jpg")
+        os.makedirs(os.path.dirname(save_vis_path), exist_ok=True)
+        cv2.imwrite(save_vis_path, img)
         return save_path
 
     def save_image(self, filename, img) -> str:

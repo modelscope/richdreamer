@@ -323,7 +323,7 @@ class NDMVDreamSystem(BaseLift3DSystem):
     def validation_step(self, batch, batch_idx):
         out = self(batch)
         self.save_image_grid(
-                f"it{self.true_global_step:06d}-{batch['index'][0]:04d}.png",
+            f"it{self.true_global_step:06d}-{batch['index'][0]:04d}.png",
             (
                 [
                     {
@@ -335,17 +335,17 @@ class NDMVDreamSystem(BaseLift3DSystem):
                 if "comp_rgb" in out
                 else []
             )
-            + (
-                [
-                    {
-                        "type": "rgb",
-                        "img": out["comp_normal_white_vis"][0],
-                        "kwargs": {"data_format": "HWC", "data_range": (0, 1)},
-                    }
-                ]
-                if "comp_normal_white_vis" in out
-                else []
-            )
+            # + (
+            #     [
+            #         {
+            #             "type": "rgb",
+            #             "img": out["comp_normal_white_vis"][0],
+            #             "kwargs": {"data_format": "HWC", "data_range": (0, 1)},
+            #         }
+            #     ]
+            #     if "comp_normal_white_vis" in out
+            #     else []
+            # )
             + (
                 [
                     {
@@ -367,7 +367,7 @@ class NDMVDreamSystem(BaseLift3DSystem):
     def test_step(self, batch, batch_idx):
         out = self(batch)
         self.save_image_grid(
-                f"it{self.true_global_step:06d}-test/{batch['index'][0]:04d}.png",
+            f"it{self.true_global_step:06d}-test/{batch['index'][0]:04d}.png",
             (
                 [
                     {
@@ -379,17 +379,17 @@ class NDMVDreamSystem(BaseLift3DSystem):
                 if "comp_rgb" in out
                 else []
             )
-            + (
-                [
-                    {
-                        "type": "rgb",
-                        "img": out["comp_normal_white_vis"][0],
-                        "kwargs": {"data_format": "HWC", "data_range": (0, 1)},
-                    }
-                ]
-                if "comp_normal_white_vis" in out
-                else []
-            )
+            # + (
+            #     [
+            #         {
+            #             "type": "rgb",
+            #             "img": out["comp_normal_white_vis"][0],
+            #             "kwargs": {"data_format": "HWC", "data_range": (0, 1)},
+            #         }
+            #     ]
+            #     if "comp_normal_white_vis" in out
+            #     else []
+            # )
             + (
                 [
                     {

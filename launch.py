@@ -105,6 +105,7 @@ def main(args, extras) -> None:
         cfg.system, resumed=cfg.resume is not None
     )
     system.set_save_dir(os.path.join(cfg.trial_dir, "save"))
+    system.set_exp_root_dir(cfg.exp_root_dir)
 
     if args.gradio:
         fh = logging.FileHandler(os.path.join(cfg.trial_dir, "logs"))

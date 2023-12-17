@@ -128,7 +128,11 @@ bash ./scripts/nerf/run_batch.sh $start_id $end_id ${prompts_nerf.txt}
 
 # If you don't have an A-100 device, we offer a save memory version to generate results.
 # For single GTX-3090/4090, 24GB GPU memory.
-python3 ./run_nerf.py -t $prompt -o $output -s 1
+# e.g. bash ./scripts/nerf/run_batch_fast.sh 0 1 ./prompts_nerf.txt
+# or e.g. python3 ./run_nerf.py -t "a dog, 3d asset" -o ./outputs/nerf --img_res 128 --save_mem 1
+bash ./scripts/nerf/run_batch_fast.sh $start_id $end_id ${prompts_nerf.txt}
+# or using:
+python3 ./run_nerf.py -t "$prompt" -o $output --img_res 128 --save_mem 1
 ```
 
 ### Our (DMTet)
@@ -147,7 +151,7 @@ Fantasia3D offers three strategies for conducting PBR modeling.  If you **Do Not
 
 ```bash
 # Quick Start, Single A-100 80G
-python3 ./run_dmtet.py -t $prompt -o $output
+python3 ./run_dmtet.py -t "$prompt" -o $output
 
 # Run from prompt list
 # e.g. bash ./scripts/nerf/run_batch.sh 0 1 ./prompts_dmtet.txt
@@ -156,7 +160,7 @@ bash ./scripts/dmtet/run_batch.sh $start_id $end_id ${prompts_dmtet.txt}
 # If you don't have an A-100 device, we offer a save memory version to generate results.
 # For single GTX-3090/4090, 24GB GPU memory.
 # bash ./scripts/dmtet/run_batch_fast.sh 0 1 ./prompts_dmtet.txt
-bash ./scripts/dmtet/run_batch_fast.sh $start_id $end_id ${prompts_dmtet.txt} 
+bash ./scripts/dmtet/run_batch_fast.sh $start_id $end_id ${prompts_dmtet.txt}
 ```
 
 

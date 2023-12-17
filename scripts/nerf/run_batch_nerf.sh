@@ -16,9 +16,9 @@ do
 
     geo_out=nerf/geo-tex
 
-    python launch.py --config configs/experimental/nd/nd-mvdream-sd15-shading-geo-tex.yaml \
+    python launch.py --config configs/geo-tex.yaml \
             --train --gpu 0 system.prompt_processor.prompt="$prompt"  use_timestamp=False \
             name=$geo_out \
-            data.width=[64,192] data.height=[64,192]  ${@:4}
+            data.width=[64,192] data.height=[64,192] data.batch_size=[4,4] ${@:4}
 
 done

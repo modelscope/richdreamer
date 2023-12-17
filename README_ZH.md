@@ -121,8 +121,12 @@ bash ./scripts/nerf/run_batch.sh $start_id $end_id ${prompts_nerf.txt}
 
 # 如果您没有A-100设备,我们提供了一个节省内存的版本来生成结果
 # 比如单个GTX-3090/4090,24GB GPU内存
-python3 ./run_nerf.py -t $prompt -o $output -s 1  
-```  
+# 例如： bash ./scripts/nerf/run_batch_fast.sh 0 1 ./prompts_nerf.txt
+# 或者 例如： python3 ./run_nerf.py -t "a dog, 3d asset" -o ./outputs/nerf --save_mem 1
+bash ./scripts/nerf/run_nerf_fast.sh $start_id $end_id ${prompts_nerf.txt}
+# 或者使用:
+python3 ./run_nerf.py -t "$prompt" -o $output --img_res 128 --save_mem 1
+```
 
 ### 基于DMTet  
 

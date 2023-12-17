@@ -49,6 +49,7 @@ class MultiviewDiffusionGuidance(BaseModule):
         weighting_strategy: str = "sds"
         cam_method: str = "abs_spec"
         generate_img: bool = False
+        half_precision_weights: bool = True
 
     cfg: Config
 
@@ -68,10 +69,6 @@ class MultiviewDiffusionGuidance(BaseModule):
 
         self.sampler = DDIMSampler(self.model)
 
-        self.alphas_cumprod: Float[Tensor, "..."] = self.model.alphas_cumprod.to(
-            self.device
-        )
-
         for p in self.model.parameters():
             p.requires_grad_(False)
 
@@ -82,7 +79,13 @@ class MultiviewDiffusionGuidance(BaseModule):
         self.max_step = int(self.num_train_timesteps * max_step_percent)
         self.grad_clip_val: Optional[float] = None
 
-        self.to(self.device)
+        self.weights_dtype = (
+            torch.float16 if self.cfg.half_precision_weights else torch.float32
+        )
+                
+        self.model.eval()
+        self.model.to(self.device, dtype=self.weights_dtype)
+        self.alphas_cumprod: Float[Tensor, "..."] = self.model.alphas_cumprod.to(self.device)
 
         threestudio.info(f"Loaded Multiview Diffusion!")
         self.count = 0
@@ -226,11 +229,12 @@ class MultiviewDiffusionGuidance(BaseModule):
     def encode_images(
         self, imgs: Float[Tensor, "B 3 256 256"]
     ) -> Float[Tensor, "B 4 32 32"]:
+        input_dtype = imgs.dtype
         imgs = imgs * 2.0 - 1.0
         latents = self.model.get_first_stage_encoding(
-            self.model.encode_first_stage(imgs)
+            self.model.encode_first_stage(imgs.to(self.weights_dtype))
         )
-        return latents  # [B, 4, 32, 32] Latent space image
+        return latents.to(input_dtype)  # [B, 4, 32, 32] Latent space image
 
     def parse_input(self, input, cond_method):
         other_inp = {}
@@ -275,6 +279,7 @@ class MultiviewDiffusionGuidance(BaseModule):
     ):
         batch_size = rgb.shape[0]
         camera = c2w
+        input_dtype = rgb.dtype
 
         rgb_BCHW = rgb.permute(0, 3, 1, 2)
 
@@ -321,7 +326,7 @@ class MultiviewDiffusionGuidance(BaseModule):
             t_expand = timestep
 
         # predict the noise residual with unet, NO grad!
-        with torch.no_grad():
+        with torch.no_grad(), torch.autocast(dtype=self.weights_dtype, device_type="cuda"):
             # add noise
             noise = torch.randn_like(latents)
             latents_noisy = self.model.q_sample(latents, t, noise)
@@ -351,12 +356,12 @@ class MultiviewDiffusionGuidance(BaseModule):
 
                 camera = camera.repeat(2, 1).to(text_embeddings)
                 context = {
-                    "context": text_embeddings,
-                    "camera": camera,
+                    "context": text_embeddings.to(self.weights_dtype),
+                    "camera": camera.to(self.weights_dtype),
                     "num_frames": self.cfg.n_view,
                 }
             else:
-                context = {"context": text_embeddings}
+                context = {"context": text_embeddings.to(self.weights_dtype)}
 
             context = self.get_cond_input(
                 input=other_inp,
@@ -369,8 +374,9 @@ class MultiviewDiffusionGuidance(BaseModule):
                 self.generate_img(
                     context, self.cfg.image_size, batch_size, other_inp, scale=10
                 )
-
             noise_pred = self.model.apply_model(latent_model_input, t_expand, context)
+
+            noise_pred = noise_pred.to(input_dtype)
 
         # perform guidance
         noise_pred_text, noise_pred_uncond = noise_pred.chunk(

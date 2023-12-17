@@ -248,6 +248,8 @@ class BaseLift3DSystem(BaseSystem):
         switch_ginp: bool = False
         switch_freq: int = 3
 
+        exp_root_dir: Optional[str] = None
+
     cfg: Config
 
     def configure(self) -> None:
