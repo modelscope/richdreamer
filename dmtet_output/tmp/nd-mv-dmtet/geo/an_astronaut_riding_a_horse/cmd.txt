@@ -1,2 +1,0 @@
-python launch.py --config configs/nd-mv-dmtet/geo.yaml --train --gpu 0 system.prompt_processor.prompt=an astronaut riding a horse use_timestamp=False name=nd-mv-dmtet/geo system.anneal_normal_stone=[500, 1000] data.elevation_range=[5, 30] data.fovy_range=[40, 45] data.camera_distance_range=[0.8, 1.0] exp_root_dir=dmtet_output/tmp
-Namespace(config='configs/nd-mv-dmtet/geo.yaml', export=False, gpu='0', gradio=False, test=False, train=True, typecheck=False, validate=False, verbose=False)

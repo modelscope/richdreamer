@@ -91,22 +91,19 @@ class PBRMaterial(BaseMaterial):
 
         fg_uv = torch.cat([n_dot_v, roughness], -1).clamp(0, 1)
 
-        fg_container = []
+		fg_container = []
+		# NOTE that if fg_uv large than 4000K, the error happends
+		for _chunck in range(0, fg_uv.shape[0], 4000000):
+			_fg_uv = fg_uv[_chunck:_chunck + 4000000]
+			_chunk_shape = _fg_uv.shape[:-1]
 
-        # NOTE that if fg_uv large than 4000K, the error happends
-        for _chunck in range(0, fg_uv.shape[0], 4000000):
-            _fg_uv = fg_uv[_chunck : _chunck + 4000000]
-            _chunk_shape = _fg_uv.shape[:-1]
+			_fg = dr.texture(self.FG_LUT, _fg_uv.reshape(1, -1, 1, 2).contiguous(), filter_mode="linear", boundary_mode="clamp",).reshape(*_chunk_shape, 2)
+			fg_container.append(_fg)
 
-            _fg = dr.texture(
-                self.FG_LUT,
-                _fg_uv.reshape(1, -1, 1, 2).contiguous(),
-                filter_mode="linear",
-                boundary_mode="clamp",
-            ).reshape(*_chunk_shape, 2)
-            fg_container.append(_fg)
+		fg = torch.cat(fg_container,0)
 
-        fg = torch.cat(fg_container, 0)
+
+
 
         F0 = (1 - metallic) * 0.04 + metallic * albedo
         specular_albedo = F0 * fg[:, 0:1] + fg[:, 1:2]

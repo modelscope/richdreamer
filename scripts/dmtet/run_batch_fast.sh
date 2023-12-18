@@ -38,10 +38,10 @@ do
             name=$geo_refine_out \
             system.geometry_convert_from=$exp_root_dir/$geo_out/$result/ckpts/last.ckpt \
             data.width=512 \
-            data.height=512 \
+            data.height=512 \      
             data.batch_size=4 \
             exp_root_dir=$exp_root_dir ${@:4}
-
+            
 
     # step.3
     prompt="a DSLR photo of ${prompts[$i]}" # trick propose by Fantasia3D
@@ -51,8 +51,10 @@ do
             system.geometry_convert_from=$exp_root_dir/$geo_refine_out/$result/ckpts/last.ckpt \
             --train --gpu 0 system.prompt_processor.prompt="$prompt"  use_timestamp=False \
             data.width=512 \
-            data.height=512 \
-            data.batch_size=4 \
+            data.height=512 \   
+            data.batch_size=4 \  
             exp_root_dir=$exp_root_dir ${@:4}
 
 done
+
+
