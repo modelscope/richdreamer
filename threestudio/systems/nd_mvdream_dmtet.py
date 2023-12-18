@@ -493,7 +493,6 @@ class ND_DMTet_MV(_Base_ND_DMTet_MV):
         front["width"] = batch["width"]
         out = self(front)
 
-
         self.save_image_grid(
             f"it{self.true_global_step:06d}-{front['index'][0]:04d}.png",
             (

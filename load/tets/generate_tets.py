@@ -7,9 +7,8 @@
 # without an express license agreement from NVIDIA CORPORATION or
 # its affiliates is strictly prohibited.
 
-import os
-
 import numpy as np
+import os
 
 """
 This code segment shows how to use Quartet: https://github.com/crawforddoran/quartet,

@@ -10,8 +10,8 @@ from typing import List
 import threestudio
 from extern.nd_sd.ldm.camera_utils import (convert_opengl_to_blender,
                                            normalize_camera,)
-from extern.nd_sd.model_zoo import build_model
 from extern.nd_sd.ldm.models.diffusion.ddim import DDIMSampler
+from extern.nd_sd.model_zoo import build_model
 from threestudio.models.prompt_processors.base import PromptProcessorOutput
 from threestudio.utils.base import BaseModule, BaseObject
 from threestudio.utils.misc import C, cleanup, parse_version

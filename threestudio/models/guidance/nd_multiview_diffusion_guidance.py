@@ -9,9 +9,9 @@ from dataclasses import dataclass, field
 from typing import List
 
 import threestudio
-from extern.nd_sd.model_zoo import build_model
 from extern.nd_sd.ldm.camera_utils import (convert_opengl_to_blender,
                                            normalize_camera,)
+from extern.nd_sd.model_zoo import build_model
 from threestudio.models.prompt_processors.base import PromptProcessorOutput
 from threestudio.utils.base import BaseModule
 from threestudio.utils.misc import C, cleanup, parse_version
@@ -82,10 +82,12 @@ class MultiviewDiffusionGuidance(BaseModule):
         self.weights_dtype = (
             torch.float16 if self.cfg.half_precision_weights else torch.float32
         )
-                
+
         self.model.eval()
         self.model.to(self.device, dtype=self.weights_dtype)
-        self.alphas_cumprod: Float[Tensor, "..."] = self.model.alphas_cumprod.to(self.device)
+        self.alphas_cumprod: Float[Tensor, "..."] = self.model.alphas_cumprod.to(
+            self.device
+        )
 
         threestudio.info(f"Loaded Multiview Diffusion!")
         self.count = 0
@@ -326,7 +328,9 @@ class MultiviewDiffusionGuidance(BaseModule):
             t_expand = timestep
 
         # predict the noise residual with unet, NO grad!
-        with torch.no_grad(), torch.autocast(dtype=self.weights_dtype, device_type="cuda"):
+        with torch.no_grad(), torch.autocast(
+            dtype=self.weights_dtype, device_type="cuda"
+        ):
             # add noise
             noise = torch.randn_like(latents)
             latents_noisy = self.model.q_sample(latents, t, noise)

@@ -407,8 +407,8 @@ class NDMVDreamSystem(BaseLift3DSystem):
 
     def on_test_epoch_end(self):
         self.save_img_sequence(
-                f"it{self.true_global_step:06d}-test",
-                f"it{self.true_global_step:06d}-test",
+            f"it{self.true_global_step:06d}-test",
+            f"it{self.true_global_step:06d}-test",
             "(\d+)\.png",
             save_format="mp4",
             fps=30,
