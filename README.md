@@ -22,7 +22,7 @@ Yushuang Wu,
 
 Our method is based on Normal-Depth diffusion Model, for more details please refer to [normal-depth-diffusion](https://github.com/modelscope/normal-depth-diffusion).
 
-## [Project page](https://lingtengqiu.github.io/RichDreamer/) | [Paper](https://arxiv.org/abs/2311.16918) | [YouTube](https://youtu.be/6gQ1VWiKoc0) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion)
+## [Project page](https://aigc3d.github.io/richdreamer) | [Paper](https://arxiv.org/abs/2311.16918) | [YouTube](https://youtu.be/6gQ1VWiKoc0) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion)
 
 
 <img src=".\figs\richdreamer.gif" alt="richdreamer" style="zoom:200%;" />
@@ -31,13 +31,14 @@ Our method is based on Normal-Depth diffusion Model, for more details please ref
 - [x]  Text to ND Diffusion Model
 - [x]  Multiview-ND and Multiview-Albedo Diffusion Models
 - [x]  Release code
-- [ ]  Docker image
-- [ ]  Provide the generation trial on [ModelScope's 3D Object Generation](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)
+- [x]  Docker image
+- [x]  Provide the generation trial on [ModelScope's 3D Object Generation](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)
 
 
 
 ## News
 
+- [ModelScope Demo](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary) is online. Have a try :fire::fire::fire: (12.22, 2023 UTC)
 - Release RichDreamer :fire::fire::fire: (12.11, 2023 UTC)
 
 ## Architecture

@@ -20,7 +20,7 @@ Yushuang Wu,
 
 法向-深度扩散模型的更多细节请参阅[normal-depth-diffusion](https://github.com/modelscope/normal-depth-diffusion)。
 
-## [项目主页](https://lingtengqiu.github.io/RichDreamer/)| [论文](https://arxiv.org/abs/2311.16918) | [bilibili](https://www.bilibili.com/video/BV1Qb4y1K7Sb/?spm_id_from=888.80997.embed_other.whitelist) | [法向-深度扩散模型](https://github.com/modelscope/normal-depth-diffusion)
+## [项目主页](https://aigc3d.gitee.io/richdreamer/)| [论文](https://arxiv.org/abs/2311.16918) | [bilibili](https://www.bilibili.com/video/BV1Qb4y1K7Sb/?spm_id_from=888.80997.embed_other.whitelist) | [法向-深度扩散模型](https://github.com/modelscope/normal-depth-diffusion)
 
 
 <img src=".\figs\richdreamer.gif" alt="richdreamer" style="zoom:200%;" />  
@@ -29,11 +29,12 @@ Yushuang Wu,
 - [x]  文本到ND扩散模型  
 - [x]  多视角ND和多视角反照率扩散模型  
 - [x]  发布代码  
-- [ ]  Docker 镜像  
-- [ ]  在[ModelScope的3D物体生成](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)上提供生成试用  
+- [x]  Docker 镜像  
+- [x]  在[ModelScope的3D物体生成](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)上提供生成试用  
 
 ## 新闻  
 
+- 基于[ModelScope](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)平台发布，在线3D物体生成模型，欢迎大家使用 :fire::fire::fire: (UTC 2023年12月22日)
 - 发布 RichDreamer :fire::fire::fire:(UTC 2023年12月11日)  
 
 ## 架构  
@@ -54,13 +55,13 @@ conda create -n rd
 conda activate rd  
 # 安装threestudio的依赖
 pip install -r requirements_3d.txt  
-```  
+```
 
 我们还提供了dockerfile来构建docker镜像,或使用我们构建的[docker镜像](https://code.alibaba-inc.com/dadong.gxd/dream3d/blob/release/1209)。  
 
 ```bash
 sudo docker build -t mv3dengine_22.04:cu118 -f docker/Dockerfile .  
-```  
+```
 
 下载预训练权重
 
@@ -75,7 +76,7 @@ python tools/download_nd_models.py
 cp ./pretrained_models/Damo_XR_Lab/Normal-Depth-Diffusion-Model/256_tets.npz ./load/tets/  
 # 将huggingface模型链接到./pretrained_models/huggingface  
 cd pretrained_models && ln -s ~/.cache/huggingface ./  
-```  
+```
 
 如果您无法访问huggingface下载SD 1.5，SD 2.1和CLIP的模型,您可以从[阿里云](https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/RichDreamer/models_sd_clip.tar. gz)下载SD模型,然后将下载的的文件 `$download_sd_clip` 放入 `pretrained_models/huggingface/hub/`。  
 
@@ -84,7 +85,7 @@ mkdir -p pretrained_models/huggingface/hub/
 cd pretrained_models/huggingface/hub/  
 mv /path/to/${download_sd_clip} ./  
 tar -xvf ${download_sd_clip} ./  
-```  
+```
 
 ## 3D生成  
 确保你有以下的模型文件：
@@ -153,7 +154,7 @@ bash ./scripts/dmtet/run_batch.sh $start_id $end_id ${prompt_dmtet.txt}
 # 比如：单个GTX-3090/4090,24GB GPU内存  
 # bash ./scripts/dmtet/run_batch_fast.sh 0 1 ./prompts_dmtet.txt  
 bash ./scripts/dmtet/run_batch_fast.sh $start_id $end_id ${prompts_dmtet.txt}   
-```  
+```
 
 
 ## 致谢  
