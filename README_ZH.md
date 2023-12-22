@@ -29,12 +29,12 @@ Yushuang Wu,
 - [x]  文本到ND扩散模型  
 - [x]  多视角ND和多视角反照率扩散模型  
 - [x]  发布代码  
-- [x]  Docker 镜像  
-- [x]  在[ModelScope的3D物体生成](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)上提供生成试用  
+- [x]  在[ModelScope的3D物体生成](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)上提供生成试用
+- [ ]  Docker 镜像    
 
 ## 新闻  
 
-- 基于[ModelScope](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)平台发布，在线3D物体生成模型，欢迎大家使用 :fire::fire::fire: (UTC 2023年12月22日)
+- 基于ModelScope平台发布，[ModelScope的3D物体生成](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)，欢迎大家使用 :fire::fire::fire: (UTC 2023年12月22日)
 - 发布 RichDreamer :fire::fire::fire:(UTC 2023年12月11日)  
 
 ## 架构  

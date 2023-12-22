@@ -31,14 +31,14 @@ Our method is based on Normal-Depth diffusion Model, for more details please ref
 - [x]  Text to ND Diffusion Model
 - [x]  Multiview-ND and Multiview-Albedo Diffusion Models
 - [x]  Release code
-- [x]  Docker image
 - [x]  Provide the generation trial on [ModelScope's 3D Object Generation](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)
+- [ ]  Docker image
 
 
 
 ## News
 
-- [ModelScope Demo](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary) is online. Have a try :fire::fire::fire: (12.22, 2023 UTC)
+- [ModelScope's 3D Object Generation](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary) is online. Have a try :fire::fire::fire: (12.22, 2023 UTC)
 - Release RichDreamer :fire::fire::fire: (12.11, 2023 UTC)
 
 ## Architecture
