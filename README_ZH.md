@@ -20,7 +20,7 @@ Yushuang Wu,
 
 法向-深度扩散模型的更多细节请参阅[normal-depth-diffusion](https://github.com/modelscope/normal-depth-diffusion)。
 
-## [项目主页](https://aigc3d.gitee.io/richdreamer/)| [论文](https://arxiv.org/abs/2311.16918) | [bilibili](https://www.bilibili.com/video/BV1Qb4y1K7Sb/?spm_id_from=888.80997.embed_other.whitelist) | [法向-深度扩散模型](https://github.com/modelscope/normal-depth-diffusion)
+## [项目主页](https://aigc3d.gitee.io/richdreamer/)| [论文](https://arxiv.org/abs/2311.16918) | [bilibili](https://www.bilibili.com/video/BV1Qb4y1K7Sb/?spm_id_from=888.80997.embed_other.whitelist) | [法向-深度扩散模型](https://github.com/modelscope/normal-depth-diffusion) | [渲染数据集](https://aigc3d.github.io/gobjaverse)
 
 
 <img src=".\figs\richdreamer.gif" alt="richdreamer" style="zoom:200%;" />  

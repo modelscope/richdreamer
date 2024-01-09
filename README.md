@@ -22,7 +22,7 @@ Yushuang Wu,
 
 Our method is based on Normal-Depth diffusion Model, for more details please refer to [normal-depth-diffusion](https://github.com/modelscope/normal-depth-diffusion).
 
-## [Project page](https://aigc3d.github.io/richdreamer) | [Paper](https://arxiv.org/abs/2311.16918) | [YouTube](https://youtu.be/6gQ1VWiKoc0) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion)
+## [Project page](https://aigc3d.github.io/richdreamer) | [Paper](https://arxiv.org/abs/2311.16918) | [YouTube](https://youtu.be/6gQ1VWiKoc0) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion) | [3D Rendering Dataset](https://aigc3d.github.io/gobjaverse)
 
 
 <img src=".\figs\richdreamer.gif" alt="richdreamer" style="zoom:200%;" />
