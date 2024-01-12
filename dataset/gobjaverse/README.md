@@ -64,6 +64,43 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/categor
                 |-- ...
 ```
 
+### Coordinate System
+
+The 3D coordinate system definition is very complex. it is difficult  for us to say  what the camera system used. Fortunately, the target  we want to get is mapping the world normal of rendering system to Normal-Bae system,  as the following figure  illustrates:
+
+![normal-bae system](./normal-bae system.png)
+
+where the U-axis and V-axis denote the width-axis and height-axis in image space, respectively, the xyz is the Normal-Bae camera view coordinate system. 
+
+Note that public rendering  system  for Objaverse is blender-based system, see:
+
+![00000_normal](./blender_world_normal.png)
+
+However, our rendering system is defined  at **Unity-based system** see:
+
+![00000_normal](./unity-based.png)
+
+*A question is how do we plug in blender's coordinate system directly without introducing a new coordinate system?*
+
+A possible solution is that we maintain world to camera  transfer matrix as blender setting, *transferring Unity-based system to blender-based system*
+
+We provide example codes to visualize the coordinate mapping.
+
+```bash
+# example of coordinate experiments
+## download datasets
+wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/Lingtengqiu/render_data_examples.zip
+unzip render_data_examples.zip
+
+## visualizing blender-based system, and warping world-space normal to normal-bae system.
+python ./process_blender_dataset.py
+
+## visualizing our system, and warping world-space normal to normal-bae system.
+
+```
+
+
+
 ## Citation	
 
 ```
