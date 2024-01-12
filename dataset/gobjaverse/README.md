@@ -21,11 +21,11 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 
 ## [Project page](https://aigc3d.github.io/gobjaverse/) | [YouTube](https://www.youtube.com/watch?v=PWweS-EPbJo) | [RichDreamer](https://aigc3d.github.io/richdreamer/) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion)
 
-
 ## News
 
 - Release G-buffer Objaverse Rendering Dataset (01.06, 2024 UTC)
 - Release 10 Category Annotation of the Objaverse Subset (01.06, 2024 UTC)
+- Thanks for [JunzheJosephZhu](https://github.com/JunzheJosephZhu) for improving the robustness of the downloading scripts. Now you could restart the download script from the break point.
 
 ## Download
 - Download gobjaverse rendering dataset using following scripts.
