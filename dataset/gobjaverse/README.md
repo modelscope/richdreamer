@@ -68,15 +68,15 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/categor
 
 The 3D coordinate system definition is very complex. it is difficult  for us to say  what the camera system used. Fortunately, the target  we want to get is mapping the world normal of rendering system to Normal-Bae system,  as the following figure  illustrates:
 
-![normal-bae system](./normal-bae system.png)
+![normal-bae system](./normal-bae-system.png)
 
 where the U-axis and V-axis denote the width-axis and height-axis in image space, respectively, the xyz is the Normal-Bae camera view coordinate system. 
 
-Note that public rendering  system  for Objaverse is blender-based system, see:
+Note that public rendering  system  for Objaverse is blender-based system:
 
 ![00000_normal](./blender_world_normal.png)
 
-However, our rendering system is defined  at **Unity-based system** see:
+However, our rendering system is defined  at **Unity-based system**, seeing:
 
 ![00000_normal](./unity-based.png)
 
@@ -96,7 +96,7 @@ unzip render_data_examples.zip
 python ./process_blender_dataset.py
 
 ## visualizing our system, and warping world-space normal to normal-bae system.
-
+python ./process_unity_dataset.py
 ```
 
 
