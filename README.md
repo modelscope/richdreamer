@@ -32,7 +32,7 @@ Our method is based on Normal-Depth diffusion Model, for more details please ref
 - [x]  Multiview-ND and Multiview-Albedo Diffusion Models
 - [x]  Release code
 - [x]  Provide the generation trial on [ModelScope's 3D Object Generation](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary)
-- [ ]  Docker image
+- [x]  Docker image
 
 
 
@@ -62,10 +62,12 @@ conda activate rd
 pip install -r requirements_3d.txt
 ```
 
-we also provide a dockerfile to build docker image or use our built [docker image](https://code.alibaba-inc.com/dadong.gxd/dream3d/blob/release/1209).
+we also provide a dockerfile to build docker image or use our built [docker image](registry.cn-hangzhou.aliyuncs.com/ailab-public/aigc3d).
 
 ```bash
 sudo docker build -t mv3dengine_22.04:cu118 -f docker/Dockerfile .
+# or use our built docker image
+sudo docker pull registry.cn-hangzhou.aliyuncs.com/ailab-public/aigc3d
 ```
 
 Download pretrained weights.
