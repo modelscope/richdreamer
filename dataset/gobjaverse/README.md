@@ -38,6 +38,8 @@ python ./download_gobjaverse_280k.py /path/to/savedata /path/to/gobjaverse_280k.
 # Or if the network is not so good, we have provided a compressed verison with each object as a tar file
 # To download the compressed version(only 260k tar files)
 python ./download_objaverse_280k_tar.py /path/to/savedata /path/to/gobjaverse_280k.json nthreads(eg. 10)
+# download gobjaverse_280k index to objaverse
+wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k_index_to_objaverse.json
 # download Cap3D text-caption file
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/text_captions_cap3d.json
 
@@ -48,6 +50,12 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/text_ca
 ```bash
 # download category annotation
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/category_annotation.json
+# If you want to download a specific category in gobjaverse280k:
+# Step1: download the index file of the specified category.
+wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k_split/gobjaverse_280k_{category_name}.json # category_name: Human-Shape, ...
+# Step2: download using script.
+# Example: python ./scripts/data/download_gobjaverse_280k.py ./gobjaverse_280k_Human-Shape ./gobjaverse_280k_Human-Shape.json 10
+python ./download_gobjaverse_280k.py /path/to/savedata /path/to/gobjaverse_280k_{category_name}.json nthreads(eg. 10)
 ```
 
 ## Folder Structure
