@@ -66,6 +66,8 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/categor
 
 ### Coordinate System
 
+#### Normal Coordinate System
+
 The 3D coordinate system definition is very complex. it is difficult  for us to say  what the camera system used. Fortunately, the target  we want to get is mapping the world normal of rendering system to Normal-Bae system,  as the following figure  illustrates:
 
 ![normal-bae system](./normal-bae-system.png)
@@ -99,6 +101,18 @@ python ./process_blender_dataset.py
 python ./process_unity_dataset.py
 ```
 
+#### Depth-Warpping 
+We write an example to demonstrate that how to obtain intrinsic matrix K, and warp ref image to target image based on ref depth map. 
+
+```bash
+# build quick-zbuff code
+mkdir -p ./lib/build
+g++ -shared -fpic -o ./lib/build/zbuff.so ./lib/zbuff.cpp
+
+# an demo for depth-based Warpping 
+# python ./depth_warp_example.py $REFVIEW $TARGETVIEW
+python3 ./depth_warp_example.py 0 3
+```
 
 
 ## Citation	
