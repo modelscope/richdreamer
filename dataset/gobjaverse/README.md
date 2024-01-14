@@ -26,7 +26,7 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 - Release G-buffer Objaverse Rendering Dataset (01.06, 2024 UTC)
 - Release 10 Category Annotation of the Objaverse Subset (01.06, 2024 UTC)
 - Thanks for [JunzheJosephZhu](https://github.com/JunzheJosephZhu) for improving the robustness of the downloading scripts. Now you could restart the download script from the break point. (01.12, 2024 UTC)
-- We will release a compressed version of the datasets, stay tuned!
+- We have released a compressed version of the datasets, check the downloading tips!
 
 ## Download
 - Download gobjaverse rendering dataset using following scripts.
@@ -35,6 +35,9 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k.json
 # Example: python ./scripts/data/download_gobjaverse_280k.py ./gobjaverse_280k ./gobjaverse_280k.json 10
 python ./download_gobjaverse_280k.py /path/to/savedata /path/to/gobjaverse_280k.json nthreads(eg. 10)
+# Or if the network is not so good, we have provided a compressed verison with each object as a tar file
+# To download the compressed version(only 260k tar files)
+python ./download_objaverse_280k_tar.py /path/to/savedata /path/to/gobjaverse_280k.json nthreads(eg. 10)
 # download Cap3D text-caption file
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/text_captions_cap3d.json
 
