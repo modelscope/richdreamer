@@ -21,6 +21,9 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 
 ## [Project page](https://aigc3d.github.io/gobjaverse/) | [YouTube](https://www.youtube.com/watch?v=PWweS-EPbJo) | [RichDreamer](https://aigc3d.github.io/richdreamer/) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion)
 
+## TODO
+- [ ]  Release objaverse-xl alignment rendering data
+
 ## News
 
 - Release G-buffer Objaverse Rendering Dataset (01.06, 2024 UTC)
@@ -38,8 +41,9 @@ python ./download_gobjaverse_280k.py /path/to/savedata /path/to/gobjaverse_280k.
 # Or if the network is not so good, we have provided a compressed verison with each object as a tar file
 # To download the compressed version(only 260k tar files)
 python ./download_objaverse_280k_tar.py /path/to/savedata /path/to/gobjaverse_280k.json nthreads(eg. 10)
-# download gobjaverse_280k index to objaverse
+# download gobjaverse_280k/gobjaverse index to objaverse
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k_index_to_objaverse.json
+wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_index_to_objaverse.json
 # download Cap3D text-caption file
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/text_captions_cap3d.json
 
