@@ -26,13 +26,13 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 
 ## News
 
-- Release G-buffer Objaverse Rendering Dataset (01.06, 2024 UTC)
-- Release 10 Category Annotation of the Objaverse Subset (01.06, 2024 UTC)
-- Thanks for [JunzheJosephZhu](https://github.com/JunzheJosephZhu) for improving the robustness of the downloading scripts. Now you could restart the download script from the break point. (01.12, 2024 UTC)
 - We have released a compressed version of the datasets, check the downloading tips! (01.14, 2024 UTC)
+- Thanks for [JunzheJosephZhu](https://github.com/JunzheJosephZhu) for improving the robustness of the downloading scripts. Now you could restart the download script from the break point. (01.12, 2024 UTC)
+- Release 10 Category Annotation of the Objaverse Subset (01.06, 2024 UTC)
+- Release G-buffer Objaverse Rendering Dataset (01.06, 2024 UTC)
 
 ## Download
-- Download gobjaverse rendering dataset using following scripts.
+- Download gobjaverse ***(6.5T)*** rendering dataset using following scripts.
 ```bash
 # download_gobjaverse_280k index file
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k.json
