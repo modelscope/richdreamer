@@ -33,6 +33,7 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 
 ## Download
 - Download gobjaverse ***(6.5T)*** rendering dataset using following scripts.
+- $\color{red}{\textsf{Please give us a ⭐star⭐ if you think the data helpful. Thanks!!!}}$ 😁😁😁
 ```bash
 # download_gobjaverse_280k index file
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k.json
