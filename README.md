@@ -37,7 +37,7 @@ Our method is based on Normal-Depth diffusion Model, for more details please ref
 
 
 ## News
-- RichDreamer is accepted by CVPR2024. (02.27, 2024 UTC)
+- RichDreamer is got accepted by CVPR2024. (**Highlight**) (04.04, 2024 UTC)
 - [ModelScope's 3D Object Generation](https://modelscope.cn/studios/Damo_XR_Lab/3D_AIGC/summary) is online. Have a try :fire::fire::fire: (12.22, 2023 UTC)
 - Release RichDreamer :fire::fire::fire: (12.11, 2023 UTC)
 
