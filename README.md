@@ -185,11 +185,12 @@ Additionally, we extend our heartfelt thanks to Chao Xu for his assistance in co
 ## Citation	
 
 ```
-@article{qiu2023richdreamer,
-    title={RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D}, 
-    author={Lingteng Qiu and Guanying Chen and Xiaodong Gu and Qi zuo and Mutian Xu and Yushuang Wu and Weihao Yuan and Zilong Dong and Liefeng Bo and Xiaoguang Han},
-    year={2023},
-    journal = {arXiv preprint arXiv:2311.16918}
+@inproceedings{qiu2024richdreamer,
+  title={Richdreamer: A generalizable normal-depth diffusion model for detail richness in text-to-3d},
+  author={Qiu, Lingteng and Chen, Guanying and Gu, Xiaodong and Zuo, Qi and Xu, Mutian and Wu, Yushuang and Yuan, Weihao and Dong, Zilong and Bo, Liefeng and Han, Xiaoguang},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={9914--9925},
+  year={2024}
 }
 ```
 
