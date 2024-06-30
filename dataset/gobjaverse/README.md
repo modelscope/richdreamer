@@ -22,7 +22,7 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 ## [Project page](https://aigc3d.github.io/gobjaverse/) | [YouTube](https://www.youtube.com/watch?v=PWweS-EPbJo) | [RichDreamer](https://aigc3d.github.io/richdreamer/) | [ND-Diffusion Model](https://github.com/modelscope/normal-depth-diffusion)
 
 ## TODO
-- [ ]  Release objaverse-xl alignment rendering data
+- [x]  Release objaverse-xl alignment rendering data
 
 ## News
 
@@ -49,6 +49,14 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjave
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/text_captions_cap3d.json
 
 ```
+- Download objaverse-xl alignment rendering data
+```bash
+# download_gobjaverse_alignment url file
+wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_alignment.json
+# Example: python ./scripts/data/download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir /path/save_dir
+python ./download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir ./gobjaverse_alignment
+```
+
 - The 10 general categories including Human-Shape (41,557), Animals (28,882), Daily-Used (220,222), Furnitures (19,284), Buildings&&Outdoor (116,545), Transportations (20,075), Plants (7,195), Food (5,314), Electronics (13,252) and Poor-quality (107,001).
 - Download the category annotation using following scripts.
 
