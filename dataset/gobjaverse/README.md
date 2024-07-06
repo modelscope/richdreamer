@@ -30,6 +30,7 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 - Thanks for [JunzheJosephZhu](https://github.com/JunzheJosephZhu) for improving the robustness of the downloading scripts. Now you could restart the download script from the break point. (01.12, 2024 UTC)
 - Release 10 Category Annotation of the Objaverse Subset (01.06, 2024 UTC)
 - Release G-buffer Objaverse Rendering Dataset (01.06, 2024 UTC)
+- Release Objaverse-XL Alignment Rendering Data (07.06, 2024 UTC)
 
 ## Download
 - Download gobjaverse ***(6.5T)*** rendering dataset using following scripts.
@@ -49,16 +50,8 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjave
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/text_captions_cap3d.json
 
 ```
-- Download objaverse-xl alignment rendering data
-```bash
-# download_gobjaverse_alignment url file
-wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_alignment.json
-# Example: python ./scripts/data/download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir /path/save_dir
-python ./download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir ./gobjaverse_alignment
-```
-
-- The 10 general categories including Human-Shape (41,557), Animals (28,882), Daily-Used (220,222), Furnitures (19,284), Buildings&&Outdoor (116,545), Transportations (20,075), Plants (7,195), Food (5,314), Electronics (13,252) and Poor-quality (107,001).
 - Download the category annotation using following scripts.
+- The 10 general categories including Human-Shape (41,557), Animals (28,882), Daily-Used (220,222), Furnitures (19,284), Buildings&&Outdoor (116,545), Transportations (20,075), Plants (7,195), Food (5,314), Electronics (13,252) and Poor-quality (107,001).
 
 ```bash
 # download category annotation
@@ -69,6 +62,14 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjave
 # Step2: download using script.
 # Example: python ./scripts/data/download_gobjaverse_280k.py ./gobjaverse_280k_Human-Shape ./gobjaverse_280k_Human-Shape.json 10
 python ./download_gobjaverse_280k.py /path/to/savedata /path/to/gobjaverse_280k_{category_name}.json nthreads(eg. 10)
+```
+
+- Download objaverse-xl alignment rendering dataset (779325) using following scripts.
+```bash
+# download_gobjaverse_alignment url file
+wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_alignment.json
+# Example: python ./scripts/data/download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir /path/save_dir
+python ./download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir ./gobjaverse_alignment
 ```
 
 ## Folder Structure
