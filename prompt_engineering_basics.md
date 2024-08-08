@@ -144,7 +144,7 @@ In my mind, I wanted big clouds of smoke billowing out of the volcano, like in t
 
 As the model trains on revised prompts, the output becomes more detailed, but most time the shape or object does not drastically change. 
 
-The model adapts its interpretation of the object based on new prompt and does not start training over again. Weights are adjusted on prompt retries, so to create the same object with a drastically different look, model weights might need to be reset.
+**The model adapts its interpretation of the object based on new prompt and does not start training over again. Weights are adjusted on prompt retries, so to create the same object with a drastically different look, model weights might need to be reset.**
 
 
 ## Persons
@@ -179,3 +179,21 @@ In comparison, here is how the model does on a realistic tiger.
 As mentioned, Richdreamer excells in generating highly-realistic animals. Adding the adjective "realistic" was used as a preventative measure, since I wanted to edit the model as little as possible afterwards. 
 
 # "Highly detailed" and other Modifiers
+
+**Prompt:** "a china teapot, 3d asset"    
+**Execution Time:** 1 hr 37 min
+
+<img src=".\user content gallery\teapot.gif" alt="3d model of a china teapot" style="zoom:200%;" />
+
+**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
+**Execution Time:** 1 hr 40 min
+
+<img src=".\user content gallery\teapot2.gif" alt="3d model of a blue and white china teapot" style="zoom:200%;" />
+
+Upon the prompt retry with "highly detailed" and adding the colors, the texture had more intricate patterns. The modifier "highly detailed" can be seen as a precautionary measure so that the model tries harder to create an output of high quality. 
+
+The color was silver instead of white. This is because the model adjusted weights from the original teapot, which was gold (and silver is closer to white than gold). As mentioned before, prompt retries cannot drastically change the model ouput; it can only refine it. 
+
+I recommend being  detailed on the intial prompt entry to include colors and modifiers like"highly detailed" then continue training the model to increase quality. 
+
+## Text-to-3d Applications
