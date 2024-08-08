@@ -149,6 +149,32 @@ As the model trains on revised prompts, the output becomes more detailed, but mo
 
 ## Persons
 
+**Prompt:** "cartoon pink fairy princess, 3d character"    
+**Execution Time:** 2 hr 18 min
+
+<img src=".\user content gallery\fairy.gif" alt="3d model of a pink fairy" style="zoom:200%;" />
+
+It seems that the model interpretted "cartoon" as including  solid-color features for the fairy as in a cartoon. However, the character has pink hair, dress, wings, and shoes. The model can place specified colors anywhere, even in unexpected places. I recommend specifying where the color is placed.
+
+**Prompt:** "a ballerina figureine with a purple tutu, 3d character"    
+**Execution Time:** 2 hr 41 min
+
+<img src=".\user content gallery\ballerina.gif" alt="3d model of a ballerina" style="zoom:200%;" />
+
+This ballerina has a clear deformation in the face. Also, it is missing a leg, which might be because of certain dataset images where the leg is hidden in the ballet pose. 
+
+It seems the model interprets "3d character" to have a less reailistic, more doll-like apprearance.
+
+**Prompt:** "a ballerina figurine with a purple tutu"    
+**Execution Time:** 2 hr 21 min
+
+<img src=".\user content gallery\ballerina2.gif" alt="more detailed 3d model of a ballerina" style="zoom:200%;" />
+
+Upon revising the prompt, we get a more detailed, realistic output. The leg is now added after the model had time to reevaluate its results. However, the output contains the same deformation in the face as the original. 
+
+I recommend not creating people, because it can be too risky with deformations. If it is necessary, you might need to run the model multiple times. 
+Keeping the prompt vague can help Richdreamer apply what it has the most data on.  
+
 ## Imaginary/Dreamer Objects
 
 Dreamer objects refer to objects that don't necessarily exist in real life, but instead ask the Richdreamer model to imagine what it would look like if it did exist in real life. 
@@ -197,3 +223,11 @@ The color was silver instead of white. This is because the model adjusted weight
 I recommend being  detailed on the intial prompt entry to include colors and modifiers like"highly detailed" then continue training the model to increase quality. 
 
 ## Text-to-3d Applications
+
+As text-to-3d generative AI models improve in capability, they can be used for customization in CGI and game development. 
+
+**Film and Animation:** Text-to-3D models can be used to quickly generate high-quality 3D assets for movies, TV shows, and animated films. Instead of manually modeling every object, artists can describe what they need, and AI generates detailed models that can be further refined or directly used in scenes. This can significantly speed up the production process and reduce costs.
+
+**Game Asset Creation:** Game developers can use text-to-3D models to generate assets such as characters, environments, and props based on simple text prompts. This allows for quicker iterations and creativity in game design. Developers can experiment with different ideas without needing extensive manual modeling.
+
+**Advertising and Marketing:** In advertising, these models can create 3D visuals for products or environments based on textual descriptions, allowing for rapid prototyping and customization. This is particularly useful for creating photorealistic images and videos that can adapt to different campaigns and client needs.
