@@ -3,13 +3,14 @@
 The Richdreamer model generates 3d models based on user inputs. Users
 can revise their prompts to arrive at an output to their satisfaction.
 
-The Richdreamer model performs best on food or animal objects. Try to generate 
-common objects with lots of data attached, so the model can generate a more accurate model. I recommend having some proficiency in using 3d modelling software to be able to modify the outputs to match desired quality (I used Blender).
+**The Richdreamer model performs best on food or animal objects.** Try to generate common objects with lots of data attached, so the model can generate a more accurate model. I recommend having some proficiency in using 3d modelling software to be able to modify the outputs to match desired quality (I used Blender).
 
 ***All prompts were run on a system that supports multi-GPU operation using 2 NVIDIA Quadro RTX 6000 GPUS.***
 
 Runtime for the model is usually ≈2 hrs. As you revise prompts of the same object, runtime can decrease to as little as ≈1 hr 15 min.
 Because execution time is long, it is important to utilize each prompt entry. Here are some things to remember when generating prompts:
+
+**High-Level Advice: It is harder to have a specific output in mind and try to get the Richdreamer model to recreate that. It is better to have general idea of the object you want, then roll with the results.**
 
 ## "3d asset" as a Modifier
 
@@ -111,6 +112,40 @@ The car's mesh was also not detailed. It was bumpy and deformed when seeing in B
 Richdreamer performs better when choosing its own colors, where the object mesh will be more detailed and colors will have more sharpness. However, because it can be hard to change the texture colors by hand, you might need to sacrifice this quality when generating outputs.  
 
 ## Aerial View
+
+The Richdreamer model works well on aerial view landscapes, which can be **beneficial for CGI and drone footage applications.**
+
+In the project page's gallery results, you can see the model creates exceptional models of Mont Saint-Michel, France in aerial view and Neuschwanstein Castle in aerial view. The model has knowledge of global landmarks, letting you create outputs like these. 
+
+Because the view is aerial, the need for precise detail is not necessary, so the model performs well. These outputs video well, making AI-generated 3d great for CGI. 
+
+**Prompt:** "island, highly detailed, aerial view"    
+**Execution Time:** 2 hr 15 min
+
+<img src=".\user content gallery\island.gif" alt="3d model of a tropical island" style="zoom:200%;" />
+
+When it comes to aerial objects, however, it is unpredicable the amount of background setting the model will output. For example, the model outputted no ocean or water when that would have been more logical. 
+
+**Prompt:** "an erupting volcano, aerial view"    
+**Execution Time:** 2 hr 21 min
+
+<img src=".\user content gallery\volcano.gif" alt="3d model of an erupting volcano" style="zoom:200%;" />
+
+The boundaries of aerial objects are also usually jagged. The model can out lots of land area or just include the main object. For this volcano, there is some volcanic rock on land.
+
+**Prompt:** "an erupting volcano with lava and smoke coming out, aerial view"    
+**Execution Time:** 3 hr 15 min
+
+<img src=".\user content gallery\volcano2.gif" alt="3d model of an erupting volcano with smoke and lava" style="zoom:200%;" />
+
+In this volcano output, the boundary is much more uneven.
+
+In my mind, I wanted big clouds of smoke billowing out of the volcano, like in the project page gallery. However, even after modifying the prompt, this did not happen.
+
+As the model trains on revised prompts, the output becomes more detailed, but most time the shape or object does not drastically change. 
+
+The model adapts its interpretation of the object based on new prompt and does not start training over again. Weights are adjusted on prompt retries, so to create the same object with a drastically different look, model weights might need to be reset.
+
 
 ## Persons
 
