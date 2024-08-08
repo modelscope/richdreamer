@@ -85,13 +85,36 @@ Because of this, I recommend not choosing objects with large holes if you do not
 
 ## Colors
 
+Specifying colors of objects can be a good way to guide the model to create the output you have in mind. 
 
+**Prompt:** "light blue polaroid camera, 3d asset"    
+**Execution Time:** 2 hr 39 min
+
+<img src=".\user content gallery\camera.gif" alt="3d model of light blue polaroid camera" style="zoom:200%;" />
+
+When guiding the model to create outputs with certain colors, I found the color clarity is not as great as when the model chooses the colors itself. This is most likely because of the specific colors from the dataset images.  For example, the polaroid camera's colors lacked sharpness, as in the boundaries were not well defined when examining the model in Blender. 
+
+**Prompt:** "light blue flower vase with red orange tulips"    
+**Execution Time:** 2 hr 17 min
+
+<img src=".\user content gallery\flower_vase.gif" alt="3d model of blue flower vase with red orange tulips" style="zoom:200%;" />
+
+The flower vase had vibrant colors, but the blue from the flower vase spilled into the green stems, which wasn't ideal. Also, the mesh was not detailed, which I found was a problem with flower/tree objects for the Richdreamer model. 
+
+**Prompt:** "vintage white convertible car, 3d asset"    
+**Execution Time:** 3 hr 15 min
+
+<img src=".\user content gallery\car.gif" alt="3d model of white vintage convertible car" style="zoom:200%;" />
+
+The car's mesh was also not detailed. It was bumpy and deformed when seeing in Blender, and the model added gold detailing to match the "vintage" prompt description. 
+
+Richdreamer performs better when choosing its own colors, where the object mesh will be more detailed and colors will have more sharpness. However, because it can be hard to change the texture colors by hand, you might need to sacrifice this quality when generating outputs.  
 
 ## Aerial View
 
-# Persons
+## Persons
 
-# Imaginary/Dreamer Objects
+## Imaginary/Dreamer Objects
 
 Dreamer objects refer to objects that don't necessarily exist in real life, but instead ask the Richdreamer model to imagine what it would look like if it did exist in real life. 
 
