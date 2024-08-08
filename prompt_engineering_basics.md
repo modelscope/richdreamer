@@ -36,7 +36,9 @@ Richdreamer is best at handling a realistic generation style. It is not perform 
 
 Though the this asset has a smoother, round look that can be considered "cute" or "cartoon," the colors are not soft and instead shiny. It is possible the model is not able to under the adjective "kawaii" and was consfused how to interpret this. 
 
-With teddy bears, the model keeps generating results where there is a face on the front and backside (another version seen in the project page's results gallery).
+With teddy bears, the model keeps generating results where there is a face on the front and backside (another version seen in the project page's results gallery). This could also be because the Stable diffusion model tries to generate a front view, backview, and overhead view of the teddy bear. There might be incorrect or not engough image data on the backside of teddy bears. 
+
+Either way, I would caution against using this object prompt unless planning to use a modelling software to fix the model afterwards. Most cases, the outputs need some sort of modification/refinement. 
 
 ## Holes
 
@@ -61,5 +63,26 @@ Because of this, I recommend not choosing objects with large holes if you do not
 ## Aerial View
 
 # Persons
+
+# Imaginary/Dreamer Objects
+
+Dreamer objects refer to objects that don't necessarily exist in real life, but instead ask the Richdreamer model to imagine what it would look like if it did exist in real life. 
+
+Example prompts would be:
+"a tiger wearing sunglasses and a leather jacket"
+"Wedding dress made of tentacles"
+"a group of dogs playing poker"
+
+**Prompt:** "origami tiger in a jungle" \
+**Execution Time:** 2 hr 17 min
+
+<img src=".\user content gallery\origami_tiger.gif" alt="3d model of an origami tiger" style="zoom:200%;" />
+
+**Prompt:** "realistic tiger, 3d asset" \
+**Execution Time:** 2 hr 12 min
+
+<img src=".\user content gallery\tiger.gif" alt="3d model of a tiger" style="zoom:200%;" />
+
+As mentioned, Richdreamer excells in generating highly-realistic animals.
 
 # "Highly detailed" and other Modifiers
