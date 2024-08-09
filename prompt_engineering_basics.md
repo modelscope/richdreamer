@@ -242,18 +242,18 @@ As text-to-3d generative AI models improve in capability, they can be used for c
 Below are animations of some of the RichDreamer 3d outputs!
 
 
-**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
-**Execution Time:** 1 hr 40 min
+**Prompt:** "a strawberry donut, 3d asset"    
+**Execution Time:** 1 hr 56 min
 <img src=".\user content gallery\strawberry_donut_animation.gif" alt="camera spin animation of strawberry donut 3d model" style="zoom:200%;" />
 
-**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
-**Execution Time:** 1 hr 40 min
+**Prompt:** "fresh fig cut in half, 3d asset"    
+**Execution Time:** 3 hr 49 min
 <img src=".\user content gallery\fig_animation.gif" alt="camera spin animation of fig 3d model" style="zoom:200%;" />
 
-**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
-**Execution Time:** 1 hr 40 min
+**Prompt:** "realistic tiger, 3d asset"    
+**Execution Time:** 2 hr 12 min
 <img src=".\user content gallery\realistic_tiger_animation.gif" alt="camera spin animation of realistic tiger 3d model" style="zoom:200%;" />
 
-**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
-**Execution Time:** 1 hr 40 min
+**Prompt:** "stuffed animal dog with bow around neck"    
+**Execution Time:** 2 hr 20 min
 <img src=".\user content gallery\stuffed_dog_animation.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />
