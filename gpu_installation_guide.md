@@ -1,16 +1,15 @@
-# Richdreamer How-to
+# RichDreamer How-to Run on GPU
 
-The Richdreamer model is a text-to-3d model that used text inputs to
-generate high-quality 3d models.
+The RichDreamer model is a text-to-3d model that used text inputs to generate high-quality 3d models.
 
-To run the Richdreamer model, you are going to need access to a gpu. I
+To run the RichDreamer model, you are going to need access to a gpu. I
 requested access to use my university\'s supercomputer, which is
 available free to their students.
 
 I connected to the computer using ssh and started an interactive session
-(python preinstalled).
+(Python preinstalled).
 
-System: Red Hat Linux 9.2
+System: Red Hat Linux 9.2  
 GPU Used: NVIDIA Quadro RTX 6000
 
 You can see if your school offers these services or use a cloud gpu
@@ -22,7 +21,8 @@ Make sure conda is set up on your gpu. If it already is, you can skip
 these steps.
 
 ```
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+# find your appropriate miniconda version at https://repo.anaconda.com/miniconda/
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
@@ -32,15 +32,15 @@ conda init # activate conda in current shell session
 source ~/.bashrc
 ```
 
-You might need to manually add Conda to your PATH if the conda command
+You might need to manually add Conda to your PATH environment variables if the conda command
 is not found while running \"conda init.\"
 
 ```
-export PATH="~/miniconda3/bin:$PATH" # replace with you path to miniconda3/bin
+export PATH="~/miniconda3/bin:$PATH" # replace with your path to miniconda3/bin
 
-source ~/.bashrc  # source shell profile to update current shell session
+source ~/.bashrc  # read and run shell profile to update current shell session
 conda init
-source ~/.bashrc  # source shell profile again
+source ~/.bashrc  # read shell profile again
 ```
 
 ## Setting Paths
@@ -49,7 +49,7 @@ You have to reset these variables in your bash shell:
 
 ``` 
 # Replace with your GPU's compute capability. To find this, run "nvidia-smi"
-# Search up the driver name
+# Search up the driver name online
 export TCNN_CUDA_ARCHITECTURES=70
 
 # Replace with the path to your CUDA installation. To find this, run "which nvcc" and copy path before /bin.
@@ -166,7 +166,7 @@ RichDreamer
 ### Installing Torch
 
 Through trial and error, my team has found that Python 3.10 and Cuda
-11.7 works best for this model.
+11.7 works best for this model. You can modify these steps if wanting to install another CUDA version.
 
 ``` 
 conda create -n myenv10 python=3.10
@@ -202,7 +202,7 @@ To find the install links for these specific packages, navigate to
 <https://download.pytorch.org/whl/cu117>. For a download link, the
 breakdown is as follows:
 
-torchvision-0.15.2+cu117-cp310-cp310-linux_x86_64.whl
+torchvision-0.15.2+cu117-cp310-cp310-linux_x86_64.whl  
 cu117 = cuda 11.7 ; cp310 = python 3.10 ; linux compatible (other option
 is windows)
 
@@ -217,8 +217,7 @@ python -c "import torch; print(torch.__version__); print(torch.cuda.is_available
 Cuda 11.7 should appear in both version instances and
 \"torch.cuda.is_available()\" should return true.
 
-If not, check your conda environment is activated. If still persists,
-try pip uninstall the torch packages above and reinstall.
+If not, check your conda environment is activated. If still persists, try to pip uninstall the torch packages above and reinstall.
 
 We will need to install all the python libraries in requirements_3d.txt.
 We can do this using the \"awk\" command to install each package one at
@@ -242,7 +241,7 @@ python -c "import torch; print(torch.__version__); print(torch.cuda.is_available
 ## More Libraries
 
 We can now run the model.py script. **This command version runs the
-model with less memory, so only 24GB is required.**
+model with less memory, so only 24GB is required for generating the output.**
 
 ``` 
 # run model with saved memory to test
@@ -290,7 +289,7 @@ python3 ./run_nerf.py -t "a strawberry glazed donut, 3d asset" -o ./outputs/nerf
 ### Mkl_fft
 
 Though I didn\'t have an issue with the mkl_fft library, one of my
-teamates did and used this line to properly install:
+teamates did and used this line to properly install it:
 
 ``` 
 conda install -c intel mkl_fft
@@ -351,7 +350,7 @@ HINT: Use '--ntasks-per-node=10' instead.
 ```
 
 If you are getting a Runtime error from slurm.py as shown above, you are
-using more than 1 node (\'10\' in the error message above). If you have
+using more than 1 node (\'10\' in the error message above). If you are
 connected to a supercomputer or a cloud computer, make sure to
 initialize a session with only 1 node.
 
@@ -425,7 +424,7 @@ output as shown below to see the results.
 cd ./outputs/nerf/tmp/nd-mv-nerf/tex-fast/a_DSLR_photo_of_a_strawberry_glazed_donut,_3d_asset/save
 ```
 
-Below is an image of the donut I created using RichDreamer. I used
+Below is a gif of the donut I created using RichDreamer. I used
 Blender to examine the 3d model in obj format.
 
 <img src=".\figs\strawberry_donut.gif" alt="3d model of strawberry donut" style="zoom:200%;" />
