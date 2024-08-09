@@ -241,10 +241,19 @@ As text-to-3d generative AI models improve in capability, they can be used for c
 
 Below are animations of some of the RichDreamer 3d outputs!
 
-<img src=".\user content gallery\strawberry_donut.gif" alt="camera spin animation of strawberry donut 3d model" style="zoom:200%;" />
 
-<img src=".\user content gallery\fig.gif" alt="camera spin animation of fig 3d model" style="zoom:200%;" />
+**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
+**Execution Time:** 1 hr 40 min
+<img src=".\user content gallery\strawberry_donut_animation.gif" alt="camera spin animation of strawberry donut 3d model" style="zoom:200%;" />
 
-<img src=".\user content gallery\realistic_tiger.gif" alt="camera spin animation of realistic tiger 3d model" style="zoom:200%;" />
+**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
+**Execution Time:** 1 hr 40 min
+<img src=".\user content gallery\fig_animation.gif" alt="camera spin animation of fig 3d model" style="zoom:200%;" />
 
-<img src=".\user content gallery\stuffed_dog.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />
+**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
+**Execution Time:** 1 hr 40 min
+<img src=".\user content gallery\realistic_tiger_animation.gif" alt="camera spin animation of realistic tiger 3d model" style="zoom:200%;" />
+
+**Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
+**Execution Time:** 1 hr 40 min
+<img src=".\user content gallery\stuffed_dog_animation.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />

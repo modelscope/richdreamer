@@ -427,4 +427,4 @@ cd ./outputs/nerf/tmp/nd-mv-nerf/tex-fast/a_DSLR_photo_of_a_strawberry_glazed_do
 Below is a gif of the donut I created using RichDreamer. I used
 Blender to examine the 3d model in obj format.
 
-<img src=".\user content gallery\strawberry_donut.gif" alt="3d model of strawberry donut" style="zoom:200%;" />
+<img src=".\user content gallery\strawberry_donut_animation.gif" alt="3d model of strawberry donut" style="zoom:200%;" />
