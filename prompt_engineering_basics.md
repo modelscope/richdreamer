@@ -20,11 +20,11 @@ It is not necessary, but it helps the Stable Diffusion model generate images tha
 
 For example, when asking DALL·E 3 to generate an image of "a cute kawaii teddy bear", it produced images like the one below. 
 
-<img src=".\figs\prompt engineering guide\teddy_bear_dalle3.png" alt="DALL·E 3 image of cute kawaii teddy bear" style="zoom:40%;" />
+<img src=".\figs\prompt engineering guide\teddy_bear_dalle3.png" alt="DALL·E 3 image of cute kawaii teddy bear" style="width:40%;" />
 
 Alternatively, when asking the prompt "a cute kawaii teddy bear 3d asset," it generates pictures like the one below. 
 
-<img src=".\figs\prompt engineering guide\teddy_bear_3dasset_dalle3.png" alt="DALL·E 3 image of cute kawaii teddy bear, 3d asset" style="zoom:40%;" />
+<img src=".\figs\prompt engineering guide\teddy_bear_3dasset_dalle3.png" alt="DALL·E 3 image of cute kawaii teddy bear, 3d asset" style="width:40%;" />
 
 As seen, the second can more easily be translated into 3d. Assuming the Stable Diffusion model follows similar prompt engineering principles as DALL·E 3 (since both implement text-to-image generative AI), adding the modifier ", 3d asset" can help ensure the output will be of better quality.
 
@@ -243,25 +243,25 @@ Below are animations of some of the RichDreamer 3d outputs! I edited the outputs
 
 
 **Prompt:** "a strawberry donut, 3d asset"    
-**Execution Time:** 1 hr 56 min
+**Execution Time:** 1 hr 56 min  
 <img src=".\user content gallery\strawberry_donut_animation.gif" alt="camera spin animation of strawberry donut 3d model" style="zoom:200%;" />
 
 **Prompt:** "fresh fig cut in half, 3d asset"    
-**Execution Time:** 3 hr 49 min
+**Execution Time:** 3 hr 49 min  
 <img src=".\user content gallery\fig_animation.gif" alt="camera spin animation of fig 3d model" style="zoom:200%;" />
 
 **Prompt:** "realistic tiger, 3d asset"    
-**Execution Time:** 2 hr 12 min
+**Execution Time:** 2 hr 12 min  
 <img src=".\user content gallery\realistic_tiger_animation.gif" alt="camera spin animation of realistic tiger 3d model" style="zoom:200%;" />
 
 **Prompt:** "origami tiger in jungle"    
-**Execution Time:** 2 hr 17 min
+**Execution Time:** 2 hr 17 min  
 <img src=".\user content gallery\origami_tiger_animation.gif" alt="camera spin animation of origami tiger 3d model" style="zoom:200%;" />
 
 **Prompt:** "stuffed animal dog with bow around neck"    
-**Execution Time:** 2 hr 20 min
+**Execution Time:** 2 hr 20 min  
 <img src=".\user content gallery\stuffed_dog_animation.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />
 
 **Prompt:** "cherry blossom tree"    
-**Execution Time:** 1 hr 28 min
+**Execution Time:** 1 hr 28 min  
 <img src=".\user content gallery\cherry_blossom_animation.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />
