@@ -35,9 +35,9 @@ RichDreamer is best at handling a realistic generation style. It does not perfor
 **Prompt:** "cute kawaii teddy bear, 3d asset"  
 **Execution Time:** 2 hr 41 min
 
-<img src=".\user content gallery\teddy-bear.gif" alt="3d model of cute kawaii teddy bear" style="zoom:200%;" />
+<img src=".\user content gallery\cute_kawaii_teddy_bear,_3d_asset.gif" alt="3d model of cute kawaii teddy bear" style="zoom:200%;" />
 
-Though the this asset has a smoother, round look that can be considered "cute" or "cartoon," the colors are stark. It is possible the model was consfused how to interpret the adjective "kawaii." 
+Though the this asset has a smoother, round look that can be considered "cute," the colors are stark. It's possible the model was consfused how to interpret the adjective "kawaii." 
 
 With teddy bears, the model keeps generating results where there is a face on the front and backside (another version seen in the project page's results gallery). This could also be because the Stable diffusion model tries to generate a front view, backview, sideview, and overhead view of the teddy bear. There might be incorrect or not engough image data on the backside of teddy bears. 
 
@@ -50,7 +50,7 @@ The RichDreamer model learns normal and depth distributions, which helps create 
 **Prompt:** "latte in mug with heart-shaped foam art"    
 **Execution Time:** 2 hr 12 min
 
-<img src=".\user content gallery\latte.gif" alt="3d model of latte in mug with foam art" style="zoom:200%;" />
+<img src=".\user content gallery\latte_in_mug_with_heart-shaped_foam_art.gif" alt="3d model of latte in mug with foam art" style="zoom:200%;" />
 
 The model first generates image representations of the object from multiple views then creates a 3d output from the images. This prompt would be translated as
 
@@ -71,7 +71,7 @@ When engineering prompts, it is best practice to not include features that are l
 **Prompt:** "a strawberry donut, 3d asset"    
 **Execution Time:** 1 hr 56 min
 
-<img src=".\user content gallery\donut.gif" alt="3d model of strawberry donut" style="zoom:200%;" />
+<img src=".\user content gallery\a_strawberry_donut,_3d_asset.gif" alt="3d model of strawberry donut" style="zoom:200%;" />
 
 RichDreamer does an excellent job generating food objects. However, the default negative prompts the model will avoid in the generated output are
 
@@ -91,21 +91,21 @@ Specifying colors of objects can be a good way to guide the model to create the 
 **Prompt:** "light blue polaroid camera, 3d asset"    
 **Execution Time:** 2 hr 39 min
 
-<img src=".\user content gallery\camera.gif" alt="3d model of light blue polaroid camera" style="zoom:200%;" />
+<img src=".\user content gallery\light_blue_polaroid_camera,_3d_asset.gif" alt="3d model of light blue polaroid camera" style="zoom:200%;" />
 
 When guiding the model to create outputs with certain colors, I found the color clarity is not as great as when the model chooses the colors itself. This is most likely because of specific colors used in the dataset images.  For example, the polaroid camera's colors lacked sharpness and the boundaries were not well defined when examining the model in Blender. 
 
 **Prompt:** "light blue flower vase with red orange tulips"    
 **Execution Time:** 2 hr 17 min
 
-<img src=".\user content gallery\flower_vase.gif" alt="3d model of blue flower vase with red orange tulips" style="zoom:200%;" />
+<img src=".\user content gallery\light_blue_flower_vase_with_red_orange_tulips.gif" alt="3d model of blue flower vase with red orange tulips" style="zoom:200%;" />
 
 The flower vase had vibrant colors, but the blue from the flower vase spilled into the green stems, which wasn't ideal. Also, the mesh was not detailed, which I found was a problem with flower/tree objects for the RichDreamer model. 
 
 **Prompt:** "vintage white convertible car, 3d asset"    
 **Execution Time:** 3 hr 15 min
 
-<img src=".\user content gallery\car.gif" alt="3d model of white vintage convertible car" style="zoom:200%;" />
+<img src=".\user content gallery\vintage_white_convertible_car,_3d_asset.gif" alt="3d model of white vintage convertible car" style="zoom:200%;" />
 
 The car's mesh was also not detailed. It was bumpy and deformed when inspecting in Blender, and the model added gold detailing to match the "vintage" prompt description. 
 
@@ -124,21 +124,21 @@ Because the view is aerial, the need for precise detail is not necessary, so the
 **Prompt:** "island, highly detailed, aerial view"    
 **Execution Time:** 2 hr 15 min
 
-<img src=".\user content gallery\island.gif" alt="3d model of a tropical island" style="zoom:200%;" />
+<img src=".\user content gallery\island,_highly_detailed,_aerial_view.gif" alt="3d model of a tropical island" style="zoom:200%;" />
 
 When it comes to aerial objects, however, it is unpredicable the amount of background/setting the model will output. For example, the model outputted no ocean or water when that would have been more ideal. To be safe, I should have included in the prompt "island in middle of ocean..." 
 
 **Prompt:** "an erupting volcano, aerial view"    
 **Execution Time:** 2 hr 21 min
 
-<img src=".\user content gallery\volcano.gif" alt="3d model of an erupting volcano" style="zoom:200%;" />
+<img src=".\user content gallery\an_erupting_volcano,_aerial_view.gif" alt="3d model of an erupting volcano" style="zoom:200%;" />
 
 The boundaries of aerial objects are usually jagged. The model can output a lot of land area or just include the main object. For this volcano, there is some volcanic rock land area.
 
 **Prompt:** "an erupting volcano with lava and smoke coming out, aerial view"    
 **Execution Time:** 3 hr 15 min
 
-<img src=".\user content gallery\volcano2.gif" alt="3d model of an erupting volcano with more smoke and lava" style="zoom:200%;" />
+<img src=".\user content gallery\an_erupting_volcano_with_lava_and_smoke_coming_out,_aerial_view.gif" alt="3d model of an erupting volcano with more smoke and lava" style="zoom:200%;" />
 
 In this volcano output, the boundary is much more uneven.
 
@@ -154,7 +154,7 @@ As the model trains on revised prompts, the output becomes more detailed, but mo
 **Prompt:** "cartoon pink fairy princess, 3d character"    
 **Execution Time:** 2 hr 18 min
 
-<img src=".\user content gallery\fairy.gif" alt="3d model of a pink fairy princess" style="zoom:200%;" />
+<img src=".\user content gallery\cartoon_pink_fairy_princess,_3d_character.gif" alt="3d model of a pink fairy princess" style="zoom:200%;" />
 
 It seems that the model interpretted "cartoon" as including  solid-color features for the fairy. "Princess" is not shown in any way, so adding too many references in a prompt can lead to one being missed. 
 
@@ -163,7 +163,7 @@ The character has pink hair, dress, wings, and shoes. The model can place specif
 **Prompt:** "a ballerina figureine with a purple tutu, 3d character"    
 **Execution Time:** 2 hr 41 min
 
-<img src=".\user content gallery\ballerina.gif" alt="3d model of a ballerina" style="zoom:200%;" />
+<img src=".\user content gallery\a_ballerina_figurine_with_a_purple_tutu,_3d_character.gif" alt="3d model of a ballerina" style="zoom:200%;" />
 
 This ballerina has a clear deformation in the face. Also, it is missing a leg, which might be because of certain dataset images where the leg is hidden in the ballet pose. 
 
@@ -172,7 +172,7 @@ It seems the model interprets "3d character" to have a less reailistic, more dol
 **Prompt:** "a ballerina figurine with a purple tutu"    
 **Execution Time:** 2 hr 21 min
 
-<img src=".\user content gallery\ballerina2.gif" alt="more detailed 3d model of a ballerina" style="zoom:200%;" />
+<img src=".\user content gallery\a_ballerina_figurine_with_a_purple_tutu.gif" alt="more detailed 3d model of a ballerina" style="zoom:200%;" />
 
 Upon revising the prompt, we get a more detailed, realistic output. The leg is now added after the model had time to reevaluate its results. The tutu and he skirt are also more attached. However, the output contains the same deformation in the face as the original, and it was too servere to fix up on Blender.
 
@@ -190,7 +190,7 @@ Example prompts would be:
 **Prompt:** "origami tiger in a jungle"    
 **Execution Time:** 2 hr 17 min
 
-<img src=".\user content gallery\origami-tiger.gif" alt="3d model of an origami tiger" style="zoom:200%;" />
+<img src=".\user content gallery\origami_tiger_in_jungle.gif" alt="3d model of an origami tiger" style="zoom:200%;" />
 
 This model videos well, but after examining it in Blender, I noticed the object mesh was not smooth and the folds were not crisp. Detail is sacrificed when creating imaginary objects and there is more possibility things could go wrong/look deformed. 
 
@@ -203,7 +203,7 @@ In comparison, here is how the RichDreamer model does on a realistic tiger.
 **Prompt:** "realistic tiger, 3d asset"    
 **Execution Time:** 2 hr 12 min
 
-<img src=".\user content gallery\tiger.gif" alt="3d model of a realistic tiger" style="zoom:200%;" />
+<img src=".\user content gallery\realistic_tiger,_3d_asset.gif" alt="3d model of a realistic tiger" style="zoom:200%;" />
 
 As mentioned, RichDreamer excels in generating highly-realistic animals. Adding the adjective "realistic" was used as a preventative measure, since I wanted to edit the model as little as possible afterwards. 
 
@@ -212,12 +212,12 @@ As mentioned, RichDreamer excels in generating highly-realistic animals. Adding 
 **Prompt:** "a china teapot, 3d asset"    
 **Execution Time:** 1 hr 37 min
 
-<img src=".\user content gallery\teapot.gif" alt="3d model of a china teapot" style="zoom:200%;" />
+<img src=".\user content gallery\a_china_teapot,_3d_asset.gif" alt="3d model of a china teapot" style="zoom:200%;" />
 
 **Prompt:** "a white and blue china teapot, highly detailed, 3d asset"    
 **Execution Time:** 1 hr 40 min
 
-<img src=".\user content gallery\teapot2.gif" alt="3d model of a blue and white china teapot" style="zoom:200%;" />
+<img src=".\user content gallery\a_white_and_blue_china_teapot,_highly_detailed,_3d_asset.gif" alt="3d model of a blue and white china teapot" style="zoom:200%;" />
 
 Upon the prompt retry with "highly detailed" and adding "white and blue" colors, the texture had more intricate patterns. The increase in detail could also be because it was the second prompt iteration.
 
@@ -239,7 +239,7 @@ As text-to-3d generative AI models improve in capability, they can be used for c
 
 ## Gallery
 
-Below are animations of some of the RichDreamer 3d outputs!
+Below are animations of some of the RichDreamer 3d outputs! I edited the outputs and produced the animations in Blender. 
 
 
 **Prompt:** "a strawberry donut, 3d asset"    
@@ -254,6 +254,14 @@ Below are animations of some of the RichDreamer 3d outputs!
 **Execution Time:** 2 hr 12 min
 <img src=".\user content gallery\realistic_tiger_animation.gif" alt="camera spin animation of realistic tiger 3d model" style="zoom:200%;" />
 
+**Prompt:** "origami tiger in jungle"    
+**Execution Time:** 2 hr 17 min
+<img src=".\user content gallery\origami_tiger_animation.gif" alt="camera spin animation of origami tiger 3d model" style="zoom:200%;" />
+
 **Prompt:** "stuffed animal dog with bow around neck"    
 **Execution Time:** 2 hr 20 min
 <img src=".\user content gallery\stuffed_dog_animation.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />
+
+**Prompt:** "cherry blossom tree"    
+**Execution Time:** 1 hr 28 min
+<img src=".\user content gallery\cherry_blossom_animation.gif" alt="camera spin animation of stuffed dog 3d model" style="zoom:200%;" />
