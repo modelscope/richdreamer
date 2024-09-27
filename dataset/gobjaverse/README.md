@@ -33,8 +33,9 @@ G-buffer Objaverse: High-Quality Rendering Dataset of Objaverse.
 - Release Objaverse-XL Alignment Rendering Data (07.06, 2024 UTC)
 
 ## Download
-- Download gobjaverse ***(6.5T)*** rendering dataset using following scripts.
 - $\color{red}{\textsf{Please give us a ⭐star⭐ if you think the data helpful. Thanks!!!}}$ 😁😁😁
+### G-Objaverse
+- Download gobjaverse ***(6.5T)*** rendering dataset using following scripts.
 ```bash
 # download_gobjaverse_280k index file
 wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_280k.json
@@ -64,6 +65,20 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjave
 python ./download_gobjaverse_280k.py /path/to/savedata /path/to/gobjaverse_280k_{category_name}.json nthreads(eg. 10)
 ```
 
+### G-Objaverse-XL Alignment
+- The Objaverse-XL alignment dataset is a high-quality subset of Objaverse-XL that contains approximately 1 million objects, of which we successfully rendered 779,325. We also provide the number of rendered objects for different file types, as shown in the table below.
+
+| Source    | FileType | Number of Rendered Objects | Start Index        | End Index        | Mapping File |
+|-----------|----------|----------------------------|--------------------|------------------|--------------|
+| github    | glb      | 62267                      | 1246/6228026       | 1283/6414711     | wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_xl_alignment_map/glb_map.json             |
+| github    | fbx      | 285505                     | 1284/6414713       | 1585/7924430     | wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_xl_alignment_map/fbx_map.json             |
+| github    | obj      | 91083                      | 921/4607943        | 1245/6228025     | wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_xl_alignment_map/obj_map.json             |
+| github    | gltf     | 0                          | -                  | -                | -            |
+| github    | blend    | 0                          | -                  | -                | -            |
+| github    | dae      | 0                          | -                  | -                | -            |
+| github    | usdz     | 0                          | -                  | -                | -            |
+| sketchfab | glb      | 340470                     | 1871/9348643       | 1945/9718918     | wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjaverse_xl_alignment_map/sketchfab_map.json        |
+
 - Download objaverse-xl alignment rendering dataset (779325) using following scripts.
 ```bash
 # download_gobjaverse_alignment url file
@@ -71,6 +86,8 @@ wget https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/gobjave
 # Example: python ./scripts/data/download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir /path/save_dir
 python ./download_gobjaverse_alignment.py --json_path gobjaverse_alignment.json --save_dir ./gobjaverse_alignment
 ```
+- If you find this dataset useful and have cleaned and filtered it further, we would appreciate being contacted for updates！
+
 
 ## Folder Structure
 - The structure of gobjaverse rendering dataset:
@@ -148,6 +165,26 @@ python3 ./depth_warp_example.py 0 3
     author={Lingteng Qiu and Guanying Chen and Xiaodong Gu and Qi zuo and Mutian Xu and Yushuang Wu and Weihao Yuan and Zilong Dong and Liefeng Bo and Xiaoguang Han},
     year={2023},
     journal = {arXiv preprint arXiv:2311.16918}
+}
+```
+```
+@inproceedings{zuo2024sparse3d,
+     title={High-Fidelity 3D Textured Shapes Generation by Sparse Encoding and Adversarial Decoding},
+     author={Zuo, Qi and Gu, Xiaodong and Dong, Yuan and Zhao, Zhengyi and Yuan, Weihao and Qiu, Lingteng and Bo, Liefeng and Dong, Zilong},
+     booktitle={European Conference on Computer Vision},
+     year={2024}
+     }
+```
+```
+@article{objaverseXL,
+  title={Objaverse-XL: A Universe of 10M+ 3D Objects},
+  author={Matt Deitke and Ruoshi Liu and Matthew Wallingford and Huong Ngo and
+          Oscar Michel and Aditya Kusupati and Alan Fan and Christian Laforte and
+          Vikram Voleti and Samir Yitzhak Gadre and Eli VanderBilt and
+          Aniruddha Kembhavi and Carl Vondrick and Georgia Gkioxari and
+          Kiana Ehsani and Ludwig Schmidt and Ali Farhadi},
+  journal={arXiv preprint arXiv:2307.05663},
+  year={2023}
 }
 ```
 ```
